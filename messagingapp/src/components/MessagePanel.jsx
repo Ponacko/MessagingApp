@@ -7,7 +7,14 @@ export class MessagePanel extends React.Component{
 
     render(){
         return <div>
-            Message currently being written will be here.
+            <textarea className="messageTextArea">
+                Write your message here.
+            </textarea>
+            <button
+                type="button"
+                className="btn btn-primary">
+                <span class="glyphicon glyphicon-send"/>
+            </button>
         </div>
     }
 }

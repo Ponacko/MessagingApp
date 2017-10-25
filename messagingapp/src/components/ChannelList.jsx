@@ -7,7 +7,14 @@ export class ChannelList extends React.Component{
 
     render(){
         return <div>
-            Channel list will be here.
+            <div>
+                Channel list will be here.
+            </div>
+            <button
+                type="button"
+                className="btn btn-primary">
+                <span class="glyphicon glyphicon-plus"/>
+            </button>
         </div>
     }
 }

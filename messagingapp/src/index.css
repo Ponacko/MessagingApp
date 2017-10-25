@@ -25,3 +25,11 @@ body {
     width: 100%;
     background: lightblue;
 }
+
+.messageTextArea{
+    float: left;
+    margin-left: 25%;
+    width: 65%;
+    height: 20vh;
+    resize: none;
+}
