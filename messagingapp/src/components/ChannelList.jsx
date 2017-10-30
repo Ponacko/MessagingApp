@@ -1,6 +1,7 @@
 import * as React from "react/cjs/react.production.min";
 import uuidv4 from 'uuid/v4';
 import Immutable from 'immutable';
+import {ChannelItem} from "./ChannelItem";
 
 export class ChannelList extends React.Component{
     constructor(){
@@ -29,18 +30,21 @@ export class ChannelList extends React.Component{
         }))
     };
 
+    _onDelete = (deletedItemId) => {
+        this.setState((previousState) => ({
+            list: previousState.list.filterNot(item => item.id === deletedItemId)
+        }))
+    };
+
     render(){
         const { list } = this.state;
         const itemElements = list.map(item => {
             return (
-                <li key={item.id}>{item.title}{' '}
-                </li>);
+                (<ChannelItem key={item.id} item={item} onDelete={this._onDelete}/>));
         });
         return <div>
-            <div>
-                <ul>
+            <div className="list-group">
                     {itemElements}
-                </ul>
             </div>
             <button
                 type="button"
