@@ -2,6 +2,7 @@ import * as React from "react/cjs/react.production.min";
 import uuidv4 from 'uuid/v4';
 import Immutable from 'immutable';
 import {ChannelItem} from "./ChannelItem";
+import {ChannelEditedItem} from "./ChannelEditedItem";
 
 export class ChannelList extends React.Component{
     constructor(){
@@ -16,9 +17,10 @@ export class ChannelList extends React.Component{
                 {
                     id: uuidv4(),
                     title: 'Second channel'
-                }])
+                }
+            ]),
+            editedItemId: null
         };
-        this._onAddClick = this._onAddClick.bind(this);
     }
 
     _onAddClick = () => {
@@ -27,20 +29,35 @@ export class ChannelList extends React.Component{
                 id: uuidv4(),
                 title: 'New channel'
             })
-        }))
+        }));
+    };
+
+    _startEditing = (itemId) => {
+        this.setState({
+            editedItemId: itemId
+        });
+    };
+
+    _cancelEditing = () => {
+        this.setState({
+            editedItemId: null
+        });
     };
 
     _onDelete = (deletedItemId) => {
         this.setState((previousState) => ({
             list: previousState.list.filterNot(item => item.id === deletedItemId)
-        }))
+        }));
     };
 
     render(){
         const { list } = this.state;
         const itemElements = list.map(item => {
+            if (item.id === this.state.editedItemId){
+                return (<ChannelEditedItem key={item.id} item={item} onCancel={this._cancelEditing}/>);
+            }
             return (
-                (<ChannelItem key={item.id} item={item} onDelete={this._onDelete}/>));
+                (<ChannelItem key={item.id} item={item} onDelete={this._onDelete} onExpand={this._startEditing}/>));
         });
         return <div>
             <div className="list-group">
