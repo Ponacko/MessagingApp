@@ -1,12 +1,13 @@
 import * as React from "react/cjs/react.production.min";
 import uuidv4 from 'uuid/v4';
+import Immutable from 'immutable';
 
 export class ChannelList extends React.Component{
     constructor(){
         super();
 
         this.state = {
-            list: [
+            list: Immutable.List([
                 {
                     id: uuidv4(),
                     title: 'First channel'
@@ -14,21 +15,19 @@ export class ChannelList extends React.Component{
                 {
                     id: uuidv4(),
                     title: 'Second channel'
-                }]
+                }])
         };
         this._onAddClick = this._onAddClick.bind(this);
     }
 
-    _onAddClick() {
-        this.state.list.push({
-            id: uuidv4(),
-            title: 'New channel'
-        });
-
-        this.setState({
-            list: this.state.list,
-        });
-    }
+    _onAddClick = () => {
+        this.setState((previousState) => ({
+            list: previousState.list.push({
+                id: uuidv4(),
+                title: 'New channel'
+            })
+        }))
+    };
 
     render(){
         const { list } = this.state;
