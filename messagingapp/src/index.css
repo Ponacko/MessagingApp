@@ -33,3 +33,7 @@ body {
     height: 20vh;
     resize: none;
 }
+
+.message{
+    text-align: left;
+}

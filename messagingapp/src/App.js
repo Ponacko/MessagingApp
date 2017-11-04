@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { ChannelList } from './components/ChannelList'
-import {ChannelMessages} from "./components/ChannelMessages";
-import {MessagePanel} from "./components/MessagePanel";
+import {ActualChannel} from "./components/ActualChannel";
 
 class App extends Component {
   render() {
@@ -12,11 +11,8 @@ class App extends Component {
         <div className="leftPanel">
             <ChannelList/>
         </div>
-          <div className="rightPanel">
-              <ChannelMessages/>
-              <div className="bottomPanel">
-                  <MessagePanel/>
-              </div>
+          <div>
+              <ActualChannel/>
           </div>
       </div>
     );
