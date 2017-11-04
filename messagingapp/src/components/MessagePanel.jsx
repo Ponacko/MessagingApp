@@ -12,21 +12,17 @@ export class MessagePanel extends React.Component{
         }).isRequired,
     }
 
-    _SendOnClick = () => {
-
-    }
-
     render(){
         return <div>
+            <form>
             <input class="messageTextArea"
-                   type="text"
-                   id={uuidv4()}
-                   placeholder="Enter message here"
-                   onfocus="this.placeholder = ''"/>
+                id="title" value={this.props.title}>
+            </input>
+            </form>
             <button
                 type="button"
                 className="btn btn-primary"
-                onClick={this._SendOnClick()}>
+                onClick={this.input}>
                 <span>SEND</span>
             </button>
         </div>
