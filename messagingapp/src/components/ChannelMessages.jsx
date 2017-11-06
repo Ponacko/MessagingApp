@@ -2,6 +2,7 @@ import * as React from "react/cjs/react.production.min";
 import Immutable from 'immutable';
 import uuidv4 from 'uuid/v4';
 import {Message} from "./Message";
+import {MessagePanel} from "./MessagePanel";
 
 export class ChannelMessages extends React.Component{
     constructor(){
@@ -10,15 +11,27 @@ export class ChannelMessages extends React.Component{
             list: Immutable.List([
                 {
                     id: uuidv4(),
-                    title: 'First message'
+                    title: 'First message',
+                    datum: new Date().toLocaleTimeString()
                 },
                 {
                     id: uuidv4(),
-                    title: 'Second message'
+                    title: 'Second message',
+                    datum: new Date().toLocaleTimeString()
                 }
             ]),
         };
     }
+
+    _addToList = (x) =>{
+        this.setState((previousState) => ({
+            list: previousState.list.push({
+                id: uuidv4(),
+                title: x,
+                datum: new Date().toLocaleTimeString()
+            })
+        }));
+    };
 
     render(){
         const { list } = this.state;
@@ -27,6 +40,9 @@ export class ChannelMessages extends React.Component{
         });
         return <div className="list-group">
                   {messages}
+                <div className="bottomPanel">
+                    <MessagePanel onSend={this._addToList}/>
+                </div>
               </div>
     }
 }

@@ -6,14 +6,15 @@ export class Message extends React.Component{
         item: PropTypes.shape({
             id: PropTypes.string.isRequired,
             title: PropTypes.string.isRequired
-        }).isRequired
+        }).isRequired,
+        datum: PropTypes.string
     };
 
     render(){
         var date = new Date();
         return(
             <div className="message">
-                {date.toLocaleTimeString()}{' : '}{this.props.item.title}
+                {this.props.item.datum}{' : '}{this.props.item.title}
             </div>
         );
     }

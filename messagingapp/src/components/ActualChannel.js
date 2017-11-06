@@ -13,9 +13,6 @@ export class ActualChannel extends React.Component{
                 <div className="rightPanel">
                     <ChannelMessages/>
                 </div>
-                <div className="bottomPanel">
-                    <MessagePanel/>
-                </div>
             </div>
         )
     }

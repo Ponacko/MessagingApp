@@ -1,32 +1,32 @@
 import * as React from "react/cjs/react.production.min";
-import uuidv4 from 'uuid/v4';
 import PropTypes from 'prop-types';
-import {ChannelMessages} from "./ChannelMessages";
-import {ChannelEditedItem} from "./ChannelEditedItem";
 
 export class MessagePanel extends React.Component{
+
     static propTypes = {
         item: PropTypes.shape({
             id: PropTypes.string.isRequired,
             title: PropTypes.string.isRequired
         }).isRequired,
+        onSend: PropTypes.func.isRequired
     }
 
-    _SendOnClick = () => {
-
+    _string = () => {
+        console.error(document.getElementById("5").value);
+        this.props.onSend(document.getElementById("5").value);
     }
 
     render(){
         return <div>
-            <input class="messageTextArea"
+            <input className="messageTextArea"
                    type="text"
-                   id={uuidv4()}
+                   id="5"
                    placeholder="Enter message here"
                    onfocus="this.placeholder = ''"/>
             <button
                 type="button"
                 className="btn btn-primary"
-                onClick={this._SendOnClick()}>
+                onClick={this._string}>
                 <span>SEND</span>
             </button>
         </div>
