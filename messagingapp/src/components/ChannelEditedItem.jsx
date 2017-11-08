@@ -7,8 +7,36 @@ export class ChannelEditedItem extends React.Component{
             id: PropTypes.string.isRequired,
             title: PropTypes.string.isRequired
         }).isRequired,
-        onCancel: PropTypes.func.isRequired
+        onCancel: PropTypes.func.isRequired,
+        onSave: PropTypes.func.isRequired
     };
+
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            editedItem: props.item
+        };
+    }
+
+    _onTitleChange = (event) => {
+        const value = event.target.value;
+
+        this.setState((previousState) => ({
+            editedItem: {
+                ...previousState.editedItem,
+                title: value
+            }
+        }));
+    };
+
+    componentWillReceiveProps(nextProps) {
+        if (this.props.item !== nextProps.item) {
+            this.setState({
+                editedItem: nextProps.item,
+            });
+        }
+    }
 
     render(){
         return (
@@ -16,9 +44,12 @@ export class ChannelEditedItem extends React.Component{
                 <form>
                     <div className="form-group">
                         <label htmlFor="title">Name</label>
-                        <input type="text" className="form-control" id="title" value={this.props.title}/>
+                        <input type="text" className="form-control" id="title" value={this.state.editedItem.title}
+                               onChange={this._onTitleChange}/>
                     </div>
-                    <button className="btn btn-primary btn-sm" onClick={e => e.preventDefault()}>Save</button>
+                    <button className="btn btn-primary btn-sm" onClick={() => this.props.onSave(this.state.editedItem)}>
+                        Save
+                    </button>
                     <button className="btn btn-default btn-sm" onClick={this.props.onCancel}>Cancel</button>
                 </form>
             </a>

@@ -39,11 +39,13 @@ export class ChannelList extends React.Component{
     };
 
     _onAddClick = () => {
+        const itemId = uuidv4();
         this.setState((previousState) => ({
             list: previousState.list.push({
-                id: uuidv4(),
+                id: itemId,
                 title: 'New channel'
-            })
+            }),
+            editedItemId: itemId
         }));
     };
 
@@ -59,6 +61,22 @@ export class ChannelList extends React.Component{
         });
     };
 
+    _updateItem = (item) => {
+        this.setState(previousState => {
+            let newState = {
+                editedItemId: null,
+            };
+
+            const itemIndex = previousState.list.findIndex(i => i.id === item.id);
+            if (itemIndex >= 0) {
+                newState.list = previousState.list.update(itemIndex, previousItem => ({...previousItem, ...item}));
+            }
+
+            return newState;
+        });
+    };
+
+
     _onDelete = (deletedItemId) => {
         this.setState((previousState) => ({
             list: previousState.list.filterNot(item => item.id === deletedItemId)
@@ -69,7 +87,8 @@ export class ChannelList extends React.Component{
         const { list } = this.state;
         const itemElements = list.map(item => {
             if (item.id === this.state.editedItemId){
-                return (<ChannelEditedItem key={item.id} item={item} onCancel={this._cancelEditing}/>);
+                return (<ChannelEditedItem key={item.id} item={item} onCancel={this._cancelEditing}
+                                           onSave={this._updateItem}/>);
             }
             return (
                 (<ChannelItem key={item.id} item={item} onDelete={this._onDelete} onExpand={this._startEditing}/>));
