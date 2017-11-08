@@ -9,19 +9,34 @@ export class ChannelList extends React.Component{
         super();
 
         this.state = {
-            list: Immutable.List([
-                {
-                    id: uuidv4(),
-                    title: 'First channel'
-                },
-                {
-                    id: uuidv4(),
-                    title: 'Second channel'
-                }
-            ]),
+            list: this._loadInitialChannelList(),
             editedItemId: null
         };
     }
+
+    componentWillUpdate(nextProps, nextState) {
+        if (this.state.list !== nextState.list) {
+            localStorage.setItem('channelList', JSON.stringify(nextState.list.toJS()));
+        }
+    }
+
+    _loadInitialChannelList = () => {
+        const storedListJSON = localStorage.getItem('channelList');
+        return storedListJSON ? Immutable.List(JSON.parse(storedListJSON)) : this._getDefaultChannelList();
+    };
+
+    _getDefaultChannelList = () => {
+        return Immutable.List([
+            {
+                id: uuidv4(),
+                title: 'First channel'
+            },
+            {
+                id: uuidv4(),
+                title: 'Second channel'
+            }
+        ]);
+    };
 
     _onAddClick = () => {
         this.setState((previousState) => ({

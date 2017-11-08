@@ -8,20 +8,20 @@ export class ChannelMessages extends React.Component{
     constructor(){
         super();
         this.state = {
-            list: Immutable.List([
-                {
-                    id: uuidv4(),
-                    title: 'First message',
-                    datum: new Date().toLocaleTimeString()
-                },
-                {
-                    id: uuidv4(),
-                    title: 'Second message',
-                    datum: new Date().toLocaleTimeString()
-                }
-            ]),
+            list: this._loadInitialChannelMessages(),
         };
     }
+
+    componentWillUpdate(nextProps, nextState) {
+        if (this.state.list !== nextState.list) {
+            localStorage.setItem('messages', JSON.stringify(nextState.list.toJS()));
+        }
+    }
+
+    _loadInitialChannelMessages = () => {
+        const storedListJSON = localStorage.getItem('messages');
+        return storedListJSON ? Immutable.List(JSON.parse(storedListJSON)) : Immutable.List();
+    };
 
     _addToList = (x) =>{
         this.setState((previousState) => ({
