@@ -1,6 +1,5 @@
 import React from 'react';
 import {ChannelMessages} from "./ChannelMessages";
-import {MessagePanel} from "./MessagePanel";
 
 export class ActualChannel extends React.Component{
     constructor(){
@@ -12,9 +11,6 @@ export class ActualChannel extends React.Component{
             <div>
                 <div className="rightPanel">
                     <ChannelMessages/>
-                </div>
-                <div className="bottomPanel">
-                    <MessagePanel/>
                 </div>
             </div>
         )
