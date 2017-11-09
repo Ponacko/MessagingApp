@@ -3,6 +3,7 @@ import Immutable from 'immutable';
 import uuidv4 from 'uuid/v4';
 import {Message} from "./Message";
 import {MessagePanel} from "./MessagePanel";
+import PropTypes from 'prop-types';
 
 export class ChannelMessages extends React.Component{
     constructor(){
@@ -10,6 +11,14 @@ export class ChannelMessages extends React.Component{
         this.state = {
             list: this._loadInitialChannelMessages(),
         };
+    }
+
+    static propTypes = {
+        item: PropTypes.shape({
+            id: PropTypes.string.isRequired,
+            title: PropTypes.string.isRequired
+        }).isRequired,
+        onSend: PropTypes.func.isRequired
     }
 
     componentWillUpdate(nextProps, nextState) {
@@ -38,7 +47,7 @@ export class ChannelMessages extends React.Component{
         const messages = list.map(item => {
             return (<Message key={item.id} item={item}/>)
         });
-        return <div className="list-group">
+        return <div className="list-group messages">
                   {messages}
                 <div className="bottomPanel">
                     <MessagePanel onSend={this._addToList}/>

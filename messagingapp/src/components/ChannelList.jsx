@@ -3,9 +3,10 @@ import uuidv4 from 'uuid/v4';
 import Immutable from 'immutable';
 import {ChannelItem} from "./ChannelItem";
 import {ChannelEditedItem} from "./ChannelEditedItem";
+import {ChannelMessages} from "./ChannelMessages";
 
-export class ChannelList extends React.Component{
-    constructor(){
+export class ChannelList extends React.Component {
+    constructor() {
         super();
 
         this.state = {
@@ -83,26 +84,33 @@ export class ChannelList extends React.Component{
         }));
     };
 
-    render(){
-        const { list } = this.state;
+    render() {
+        const {list} = this.state;
         const itemElements = list.map(item => {
-            if (item.id === this.state.editedItemId){
+            if (item.id === this.state.editedItemId) {
                 return (<ChannelEditedItem key={item.id} item={item} onCancel={this._cancelEditing}
                                            onSave={this._updateItem}/>);
             }
             return (
                 (<ChannelItem key={item.id} item={item} onDelete={this._onDelete} onExpand={this._startEditing}/>));
         });
-        return <div>
-            <div className="list-group">
-                    {itemElements}
+        return (
+            <div>
+                <div className="leftPanel">
+                    <div className="list-group">
+                        {itemElements}
+                    </div>
+                    <button
+                        type="button"
+                        onClick={this._onAddClick}
+                        className="btn btn-primary">
+                        <span className="glyphicon glyphicon-plus"/>
+                    </button>
+                </div>
+                <div className="rightPanel">
+                    <ChannelMessages/>
+                </div>
             </div>
-            <button
-                type="button"
-                onClick={this._onAddClick}
-                className="btn btn-primary">
-                <span className="glyphicon glyphicon-plus"/>
-            </button>
-        </div>
+        )
     }
 }
