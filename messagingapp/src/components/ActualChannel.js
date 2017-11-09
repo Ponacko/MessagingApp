@@ -1,6 +1,5 @@
 import React from 'react';
 import {ChannelMessages} from "./ChannelMessages";
-import {MessagePanel} from "./MessagePanel";
 
 export class ActualChannel extends React.Component{
     constructor(){

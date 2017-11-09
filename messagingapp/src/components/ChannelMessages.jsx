@@ -8,18 +8,7 @@ export class ChannelMessages extends React.Component{
     constructor(){
         super();
         this.state = {
-            list: Immutable.List([
-                {
-                    id: uuidv4(),
-                    title: 'First message',
-                    datum: new Date().toLocaleTimeString()
-                },
-                {
-                    id: uuidv4(),
-                    title: 'Second message',
-                    datum: new Date().toLocaleTimeString()
-                }
-            ]),
+            list: Immutable.List(),
         };
     }
 
@@ -38,11 +27,13 @@ export class ChannelMessages extends React.Component{
         const messages = list.map(item => {
             return (<Message key={item.id} item={item}/>)
         });
-        return <div className="list-group">
+        return <div>
+                <div className="list-group messages">
                   {messages}
+                </div>
                 <div className="bottomPanel">
                     <MessagePanel onSend={this._addToList}/>
                 </div>
-              </div>
+               </div>
     }
 }

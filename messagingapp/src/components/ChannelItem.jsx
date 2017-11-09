@@ -14,7 +14,8 @@ export class ChannelItem extends React.Component{
     render(){
         return (
             <div>
-                <a href="#" className="list-group-item list-group-item-action" >
+                <a href="#" className="list-group-item list-group-item-action"
+                >
                     <i className="glyphicon glyphicon-edit" aria-hidden="true"
                        onClick={() => this.props.onExpand(this.props.item.id)}/>
                     {' '}{this.props.item.title}{' '}
