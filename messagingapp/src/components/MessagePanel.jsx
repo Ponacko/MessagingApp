@@ -37,7 +37,7 @@ export class MessagePanel extends React.Component{
                 type="button"
                 className="btn btn-primary"
                 onClick={this._string2}>
-                <span class="glyphicon glyphicon-send"/>
+                <span className="glyphicon glyphicon-send"/>
             </button>
         </div>
     }

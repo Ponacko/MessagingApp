@@ -11,9 +11,37 @@ export class ChannelList extends React.Component {
 
         this.state = {
             list: this._loadInitialChannelList(),
-            editedItemId: null
+            editedItemId: null,
+            selectedChannel: null
         };
     }
+
+    getSelectedChannel() {
+        if (this.state.selectedChannel) {
+            return this.state.selectedChannel;
+        }
+        else if (this.state.list[0]) {
+            return this.state.list[0];
+        }
+        else return (
+                {
+                    id: uuidv4(),
+                    title: 'Empty channel',
+                    messageList: Immutable.List()
+                }
+
+            )
+
+    }
+
+    setSelectedChannel(channel) {
+        this.setState((previousState) => ({
+            list: previousState.list,
+            editedItemId: previousState.editedItemId,
+            selectedChannel: channel
+        }));
+    }
+
 
     componentWillUpdate(nextProps, nextState) {
         if (this.state.list !== nextState.list) {
@@ -30,11 +58,13 @@ export class ChannelList extends React.Component {
         return Immutable.List([
             {
                 id: uuidv4(),
-                title: 'First channel'
+                title: 'First channel',
+                messageList: Immutable.List()
             },
             {
                 id: uuidv4(),
-                title: 'Second channel'
+                title: 'Second channel',
+                messageList: Immutable.List()
             }
         ]);
     };
@@ -44,9 +74,11 @@ export class ChannelList extends React.Component {
         this.setState((previousState) => ({
             list: previousState.list.push({
                 id: itemId,
-                title: 'New channel'
+                title: 'New channel',
+                messageList: Immutable.List()
             }),
-            editedItemId: itemId
+            editedItemId: itemId,
+            selectedChannel: previousState.selectedChannel
         }));
     };
 
@@ -92,7 +124,9 @@ export class ChannelList extends React.Component {
                                            onSave={this._updateItem}/>);
             }
             return (
-                (<ChannelItem key={item.id} item={item} onDelete={this._onDelete} onExpand={this._startEditing}/>));
+                (<ChannelItem key={item.id}
+                              onClick={() => this.setSelectedChannel(item)} item={item} onDelete={this._onDelete}
+                              onExpand={this._startEditing}/>));
         });
         return (
             <div>
@@ -108,7 +142,7 @@ export class ChannelList extends React.Component {
                     </button>
                 </div>
                 <div className="rightPanel">
-                    <ChannelMessages/>
+                    <ChannelMessages channel={this.getSelectedChannel()}/>
                 </div>
             </div>
         )

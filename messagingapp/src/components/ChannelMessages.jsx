@@ -5,34 +5,59 @@ import {Message} from "./Message";
 import {MessagePanel} from "./MessagePanel";
 import PropTypes from 'prop-types';
 
-export class ChannelMessages extends React.Component{
-    constructor(){
-        super();
+export class ChannelMessages extends React.Component {
+    constructor(props) {
+        super(props);
         this.state = {
-            list: this._loadInitialChannelMessages(),
+            channel: this._getDefaultChannel,
+            list: this._loadInitialChannelMessages(this._getDefaultChannel),
         };
     }
 
-    static propTypes = {
-        item: PropTypes.shape({
-            id: PropTypes.string.isRequired,
-            title: PropTypes.string.isRequired
-        }).isRequired,
-        onSend: PropTypes.func.isRequired
-    }
-
-    componentWillUpdate(nextProps, nextState) {
-        if (this.state.list !== nextState.list) {
-            localStorage.setItem('messages', JSON.stringify(nextState.list.toJS()));
+    _getDefaultChannel() {
+        return {
+            id: uuidv4(),
+            title: "Empty channel",
+            messageList: Immutable.List()
         }
     }
 
-    _loadInitialChannelMessages = () => {
-        const storedListJSON = localStorage.getItem('messages');
-        return storedListJSON ? Immutable.List(JSON.parse(storedListJSON)) : Immutable.List();
+    static propTypes = {
+        channel: PropTypes.shape({
+            id: PropTypes.string.isRequired,
+            title: PropTypes.string.isRequired,
+            messageList: PropTypes.instanceOf(Immutable.Iterable)
+        }).isRequired
     };
 
-    _addToList = (x) =>{
+    componentWillUpdate(nextProps, nextState) {
+        if (this.state.list !== nextState.list) {
+            const json = (this.state.channel.id === nextState.channel.id)? nextState.list : this.state.list;
+            localStorage.setItem('messages' + this.state.channel.id, JSON.stringify(json.toJS()));
+            console.log('saving' + nextState.list.toJS() + ' messages to' +  this.state.channel.title);
+        }
+    }
+
+    componentWillReceiveProps(props) {
+        console.log('props to' + props.channel.title);
+        this.setState({
+            channel: props.channel,
+            list: this._loadInitialChannelMessages(props.channel),
+        });
+    }
+
+    _loadInitialChannelMessages = (channel) => {
+        let storedListJSON = null;
+        if (channel) {
+            console.log('list to' + channel.title);
+            storedListJSON = localStorage.getItem('messages' + channel.id);
+            console.log('loading messages' + channel.title);
+        }
+        return storedListJSON ? Immutable.List(JSON.parse(storedListJSON)) : Immutable.List();
+
+    };
+
+    _addToList = (x) => {
         this.setState((previousState) => ({
             list: previousState.list.push({
                 id: uuidv4(),
@@ -42,16 +67,17 @@ export class ChannelMessages extends React.Component{
         }));
     };
 
-    render(){
-        const { list } = this.state;
+    render() {
+        const {list} = this.state;
         const messages = list.map(item => {
             return (<Message key={item.id} item={item}/>)
         });
         return <div className="list-group messages">
-                  {messages}
-                <div className="bottomPanel">
-                    <MessagePanel onSend={this._addToList}/>
-                </div>
-              </div>
+            {this.state.channel.title}
+            {messages}
+            <div className="bottomPanel">
+                <MessagePanel onSend={this._addToList}/>
+            </div>
+        </div>
     }
 }
