@@ -10,9 +10,6 @@ export class Message extends React.Component{
         }).isRequired,
     };
 
-    _sendOnClick = () => {
-
-    }
 
     render(){
         var date = new Date();
