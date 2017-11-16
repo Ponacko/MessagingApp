@@ -1,7 +1,8 @@
 import {channelList} from "./channelList";
 import {messageList} from "./messageList";
+import combineReducers from "redux/es/combineReducers";
 
-export const chatApp = (prevState, action) => ({
-    channelList: channelList(prevState.channelList, action),
-    messageList: messageList(prevState.messageList, action)
+export const chatApp = combineReducers({
+    channelList,
+    messageList
 });
