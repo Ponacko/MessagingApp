@@ -1,17 +1,17 @@
 import uuidv4 from 'uuid/v4';
 import {
-    CHANNEL_ITEM_CREATE,
-    CHANNEL_ITEM_DELETE,
-    CHANNEL_ITEM_UPDATE,
+    CHANNEL_CREATE,
+    CHANNEL_DELETE,
+    CHANNEL_UPDATE,
     MESSAGE_CREATE,
     MESSAGE_DELETE,
     MESSAGE_UPDATE
 } from '../constants/actionTypes';
 
 export const createNewChannel = (newChannel) => ({
-    type: CHANNEL_ITEM_CREATE,
+    type: CHANNEL_CREATE,
     payload: {
-        item: {
+        channel: {
         ...newChannel,
         id: uuidv4(),
         },
@@ -19,14 +19,14 @@ export const createNewChannel = (newChannel) => ({
 });
 
 export const deleteChannel = (id) => ({
-    type: CHANNEL_ITEM_DELETE,
+    type: CHANNEL_DELETE,
     payload: {
         id
     }
 });
 
 export const updateChannel = (channel) => ({
-    type: CHANNEL_ITEM_UPDATE,
+    type: CHANNEL_UPDATE,
     payload: {
         channel
     }
