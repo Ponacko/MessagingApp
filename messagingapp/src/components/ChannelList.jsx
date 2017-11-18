@@ -2,18 +2,16 @@ import * as React from "react/cjs/react.production.min";
 import uuidv4 from 'uuid/v4';
 import Immutable from 'immutable';
 import PropTypes from 'prop-types';
-import {ChannelEditedItem} from "./ChannelEditedItem";
 import {ChannelMessages} from "./ChannelMessages";
 import {ChannelItem} from "../containers-redux/ChannelItem";
+import {ChannelEditedItem} from "../containers-redux/ChannelEditedItem";
 
 export class ChannelList extends React.Component {
     static propTypes = {
         editedChannelId: PropTypes.string,
         list: PropTypes.instanceOf(Immutable.List).isRequired,
         onCreateNew: PropTypes.func.isRequired,
-        onUpdate: PropTypes.func.isRequired,
-        onStartEditing: PropTypes.func.isRequired,
-        onCancelEditing: PropTypes.func.isRequired
+        onStartEditing: PropTypes.func.isRequired
     };
 
     constructor(props) {
@@ -92,8 +90,7 @@ export class ChannelList extends React.Component {
         const {list} = this.props;
         const itemElements = list.map(item => {
             if (item.id === this.props.editedChannelId) {
-                return (<ChannelEditedItem key={item.id} item={item} onCancel={this.props.onCancelEditing}
-                                           onSave={this.props.onUpdate}/>);
+                return (<ChannelEditedItem key={item.id} item={item} />);
             }
             return (
                 (<ChannelItem key={item.id}

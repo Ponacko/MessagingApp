@@ -12,9 +12,7 @@ const mapStateToProps = (state) => ({
 
 const  mapDispatchToProps = (dispatch) => ({
     onCreateNew: (channel) => dispatch(createNewChannel(channel)),
-    onUpdate: (channel) => dispatch(updateChannel(channel)),
-    onStartEditing: (id) => dispatch(startEditingChannel(id)),
-    onCancelEditing: () => dispatch(cancelEditingChannel())
+    onStartEditing: (id) => dispatch(startEditingChannel(id))
 });
 
 const enhancer = connect(mapStateToProps, mapDispatchToProps);
