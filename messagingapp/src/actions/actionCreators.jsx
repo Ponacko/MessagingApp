@@ -1,11 +1,12 @@
 import uuidv4 from 'uuid/v4';
 import {
+    CANCEL_EDITING_CHANNEL,
     CHANNEL_CREATE,
     CHANNEL_DELETE,
     CHANNEL_UPDATE,
     MESSAGE_CREATE,
     MESSAGE_DELETE,
-    MESSAGE_UPDATE
+    MESSAGE_UPDATE, START_EDITING_CHANNEL
 } from '../constants/actionTypes';
 
 export const createNewChannel = (newChannel) => ({
@@ -30,6 +31,17 @@ export const updateChannel = (channel) => ({
     payload: {
         channel
     }
+});
+
+export const startEditingChannel = (id) => ({
+    type: START_EDITING_CHANNEL,
+    payload: {
+        id,
+    }
+});
+
+export const cancelEditingChannel = () => ({
+    type: CANCEL_EDITING_CHANNEL,
 });
 
 export const createNewMessage = (newMessage) => ({

@@ -2,7 +2,7 @@ import * as Immutable from 'immutable'
 import {
     CHANNEL_UPDATE,
     CHANNEL_DELETE,
-    CHANNEL_CREATE
+    CHANNEL_CREATE, START_EDITING_CHANNEL
 } from "../constants/actionTypes";
 
 export const channelList = (previousState = Immutable.List(), action) => {

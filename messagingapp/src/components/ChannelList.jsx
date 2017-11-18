@@ -2,16 +2,18 @@ import * as React from "react/cjs/react.production.min";
 import uuidv4 from 'uuid/v4';
 import Immutable from 'immutable';
 import PropTypes from 'prop-types';
-import {ChannelItem} from "./ChannelItem";
 import {ChannelEditedItem} from "./ChannelEditedItem";
 import {ChannelMessages} from "./ChannelMessages";
+import {ChannelItem} from "../containers-redux/ChannelItem";
 
 export class ChannelList extends React.Component {
     static propTypes = {
+        editedChannelId: PropTypes.string,
         list: PropTypes.instanceOf(Immutable.List).isRequired,
         onCreateNew: PropTypes.func.isRequired,
         onUpdate: PropTypes.func.isRequired,
-        onDelete: PropTypes.func.isRequired
+        onStartEditing: PropTypes.func.isRequired,
+        onCancelEditing: PropTypes.func.isRequired
     };
 
     constructor(props) {
@@ -19,7 +21,6 @@ export class ChannelList extends React.Component {
 
         this.state = {
             list: this._loadInitialChannelList(),
-            editedItemId: null,
             selectedChannel: null
         };
     }
@@ -45,7 +46,7 @@ export class ChannelList extends React.Component {
     setSelectedChannel(channel) {
         this.setState((previousState) => ({
             list: previousState.list,
-            editedItemId: previousState.editedItemId,
+            editedChannelId: previousState.editedChannelId,
             selectedChannel: channel
         }));
     }
@@ -87,34 +88,17 @@ export class ChannelList extends React.Component {
         this.props.onCreateNew(newChannel)
     };
 
-    _startEditing = (itemId) => {
-        this.setState({
-            editedItemId: itemId
-        });
-    };
-
-    _cancelEditing = () => {
-        this.setState({
-            editedItemId: null
-        });
-    };
-
-    _updateItem = (item) => {
-        this.props.onUpdate(item);
-        this._cancelEditing();
-    };
-
     render() {
         const {list} = this.props;
         const itemElements = list.map(item => {
-            if (item.id === this.state.editedItemId) {
-                return (<ChannelEditedItem key={item.id} item={item} onCancel={this._cancelEditing}
-                                           onSave={this._updateItem}/>);
+            if (item.id === this.props.editedChannelId) {
+                return (<ChannelEditedItem key={item.id} item={item} onCancel={this.props.onCancelEditing}
+                                           onSave={this.props.onUpdate}/>);
             }
             return (
                 (<ChannelItem key={item.id}
-                              onClick={() => this.setSelectedChannel(item)} item={item} onDelete={this.props.onDelete}
-                              onExpand={this._startEditing}/>));
+                              onExpand={this.props.onStartEditing}
+                              onClick={() => this.setSelectedChannel(item)} item={item}/>));
         });
         return (
             <div>

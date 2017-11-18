@@ -1,15 +1,20 @@
-import {createNewChannel, deleteChannel, updateChannel} from "../actions/actionCreators";
+import {
+    cancelEditingChannel, createNewChannel, deleteChannel, startEditingChannel,
+    updateChannel
+} from "../actions/actionCreators";
 import connect from "react-redux/es/connect/connect";
 import {ChannelList} from "../components/ChannelList";
 
 const mapStateToProps = (state) => ({
     list: state.chatApp.channelList,
+    editedChannelId: state.chatApp.editedChannelId
 });
 
 const  mapDispatchToProps = (dispatch) => ({
     onCreateNew: (channel) => dispatch(createNewChannel(channel)),
     onUpdate: (channel) => dispatch(updateChannel(channel)),
-    onDelete: (id) => dispatch(deleteChannel(id))
+    onStartEditing: (id) => dispatch(startEditingChannel(id)),
+    onCancelEditing: () => dispatch(cancelEditingChannel())
 });
 
 const enhancer = connect(mapStateToProps, mapDispatchToProps);
