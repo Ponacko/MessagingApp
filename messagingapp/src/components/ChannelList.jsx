@@ -1,17 +1,24 @@
 import * as React from "react/cjs/react.production.min";
 import uuidv4 from 'uuid/v4';
 import Immutable from 'immutable';
-import {ChannelItem} from "./ChannelItem";
-import {ChannelEditedItem} from "./ChannelEditedItem";
+import PropTypes from 'prop-types';
 import {ChannelMessages} from "./ChannelMessages";
+import {ChannelItem} from "../containers-redux/ChannelItem";
+import {ChannelEditedItem} from "../containers-redux/ChannelEditedItem";
 
 export class ChannelList extends React.Component {
-    constructor() {
-        super();
+    static propTypes = {
+        editedChannelId: PropTypes.string,
+        list: PropTypes.instanceOf(Immutable.List).isRequired,
+        onCreateNew: PropTypes.func.isRequired,
+        onStartEditing: PropTypes.func.isRequired
+    };
+
+    constructor(props) {
+        super(props);
 
         this.state = {
             list: this._loadInitialChannelList(),
-            editedItemId: null,
             selectedChannel: null
         };
     }
@@ -37,15 +44,15 @@ export class ChannelList extends React.Component {
     setSelectedChannel(channel) {
         this.setState((previousState) => ({
             list: previousState.list,
-            editedItemId: previousState.editedItemId,
+            editedChannelId: previousState.editedChannelId,
             selectedChannel: channel
         }));
     }
 
 
-    componentWillUpdate(nextProps, nextState) {
-        if (this.state.list !== nextState.list) {
-            localStorage.setItem('channelList', JSON.stringify(nextState.list.toJS()));
+    componentWillUpdate(nextProps) {
+        if (this.props.list !== nextProps.list) {
+            localStorage.setItem('channelList', JSON.stringify(nextProps.list.toJS()));
         }
     }
 
@@ -71,62 +78,24 @@ export class ChannelList extends React.Component {
 
     _onAddClick = () => {
         const itemId = uuidv4();
-        this.setState((previousState) => ({
-            list: previousState.list.push({
+        const newChannel = {
                 id: itemId,
                 title: 'New channel',
                 messageList: Immutable.List()
-            }),
-            editedItemId: itemId,
-            selectedChannel: previousState.selectedChannel
-        }));
-    };
-
-    _startEditing = (itemId) => {
-        this.setState({
-            editedItemId: itemId
-        });
-    };
-
-    _cancelEditing = () => {
-        this.setState({
-            editedItemId: null
-        });
-    };
-
-    _updateItem = (item) => {
-        this.setState(previousState => {
-            let newState = {
-                editedItemId: null,
             };
-
-            const itemIndex = previousState.list.findIndex(i => i.id === item.id);
-            if (itemIndex >= 0) {
-                newState.list = previousState.list.update(itemIndex, previousItem => ({...previousItem, ...item}));
-            }
-
-            return newState;
-        });
-    };
-
-
-    _onDelete = (deletedItemId) => {
-        this.setState((previousState) => ({
-            list: previousState.list.filterNot(item => item.id === deletedItemId)
-        }));
+        this.props.onCreateNew(newChannel)
     };
 
     render() {
-        const {list} = this.state;
+        const {list} = this.props;
         const itemElements = list.map(item => {
-            if (item.id === this.state.editedItemId) {
-                return (<ChannelEditedItem key={item.id} item={item} onCancel={this._cancelEditing}
-                                           onSave={this._updateItem}/>);
+            if (item.id === this.props.editedChannelId) {
+                return (<ChannelEditedItem key={item.id} item={item} />);
             }
             return (
                 (<ChannelItem key={item.id}
-                              onClick={() => this.setSelectedChannel(item)} item={item} onDelete={this._onDelete}
-                              onExpand={this._startEditing}/>));
+                              onExpand={this.props.onStartEditing}
+                              onClick={() => this.setSelectedChannel(item)} item={item}/>));
         });
         return (
             <div>
