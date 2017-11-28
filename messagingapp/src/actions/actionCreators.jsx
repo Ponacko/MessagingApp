@@ -5,9 +5,12 @@ import {
     CHANNEL_DELETE,
     CHANNEL_UPDATE,
     MESSAGE_CREATE,
-    MESSAGE_DELETE,
-    MESSAGE_UPDATE, START_EDITING_CHANNEL
+    MESSAGE_DELETE, MESSAGE_SEND,
+    INPUT_CHANGED,
+    MESSAGE_UPDATE,
+    START_EDITING_CHANNEL
 } from '../constants/actionTypes';
+import {BLANK} from "../utils/constants";
 
 export const createNewChannel = (newChannel) => ({
     type: CHANNEL_CREATE,
@@ -42,6 +45,21 @@ export const startEditingChannel = (id) => ({
 
 export const cancelEditingChannel = () => ({
     type: CANCEL_EDITING_CHANNEL,
+});
+
+export const sendMessage = (message) => ({
+    type: MESSAGE_SEND,
+    payload: {
+        message
+    }
+})
+
+
+export const changeInput = (string) => ({
+   type: INPUT_CHANGED,
+    payload: {
+       string
+    }
 });
 
 export const createNewMessage = (newMessage) => ({

@@ -2,10 +2,10 @@ import * as React from "react/cjs/react.production.min";
 import Immutable from 'immutable';
 import uuidv4 from 'uuid/v4';
 import {Message} from "./Message";
-import {MessagePanel} from "./MessagePanel";
+import {MessagePanel} from "../containers-redux/MessagePanel";
 import PropTypes from 'prop-types';
 
-export class ChannelMessages extends React.Component {
+export class MessageList extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -13,7 +13,7 @@ export class ChannelMessages extends React.Component {
             list: this._loadInitialChannelMessages(this._getDefaultChannel),
         };
     }
-
+    
     _getDefaultChannel() {
         return {
             id: uuidv4(),
@@ -26,7 +26,8 @@ export class ChannelMessages extends React.Component {
         channel: PropTypes.shape({
             id: PropTypes.string.isRequired,
             title: PropTypes.string.isRequired,
-            messageList: PropTypes.instanceOf(Immutable.Iterable)
+            messageList: PropTypes.instanceOf(Immutable.Iterable),
+            onCreateNew: PropTypes.func.isRequired,
         }).isRequired
     };
 
@@ -58,17 +59,18 @@ export class ChannelMessages extends React.Component {
     };
 
     _addToList = (x) => {
-        this.setState((previousState) => ({
-            list: previousState.list.push({
-                id: uuidv4(),
-                title: x,
-                datum: new Date().toLocaleTimeString()
-            })
-        }));
+        const id = uuidv4();
+        const message = {
+            id: id,
+            title: x,
+            datum: new Date().toLocaleTimeString()
+        };
+        return this.props.onCreateNew(message);
     };
 
+
     render() {
-        const {list} = this.state;
+        const {list} = this.props;
         const messages = list.map(item => {
             return (<Message key={item.id} item={item}/>)
         });

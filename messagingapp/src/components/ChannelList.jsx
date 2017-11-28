@@ -2,7 +2,7 @@ import * as React from "react/cjs/react.production.min";
 import uuidv4 from 'uuid/v4';
 import Immutable from 'immutable';
 import PropTypes from 'prop-types';
-import {ChannelMessages} from "./ChannelMessages";
+import {MessageList} from "../containers-redux/MessageList";
 import {ChannelItem} from "../containers-redux/ChannelItem";
 import {ChannelEditedItem} from "../containers-redux/ChannelEditedItem";
 
@@ -111,7 +111,7 @@ export class ChannelList extends React.Component {
                     </button>
                 </div>
                 <div className="rightPanel">
-                    <ChannelMessages channel={this.getSelectedChannel()}/>
+                    <MessageList channel={this.getSelectedChannel()}/>
                 </div>
             </div>
         )

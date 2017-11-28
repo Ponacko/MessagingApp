@@ -5,10 +5,11 @@ import {
     MESSAGE_DELETE
 } from "../constants/actionTypes";
 
-export const messageList = (previousState = Immutable.List, action) => {
+export const messageList = (previousState = Immutable.List(), action) => {
     switch (action.type){
         case MESSAGE_CREATE:
-            return previousState.push({ ...action.payload.message});
+            console.log({...action.payload.item});
+            return previousState.push({ ...action.payload.item});
         case MESSAGE_DELETE: {
             const message = action.payload.message;
             const messageIndex = previousState.findIndex(i => i.id === message.id);
