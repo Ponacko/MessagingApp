@@ -5,76 +5,23 @@ import PropTypes from 'prop-types';
 import {MessageList} from "../containers-redux/MessageList";
 import {ChannelItem} from "../containers-redux/ChannelItem";
 import {ChannelEditedItem} from "../containers-redux/ChannelEditedItem";
+import {getInitialChannels} from "../utils/getInitialChannels";
 
 export class ChannelList extends React.Component {
     static propTypes = {
         editedChannelId: PropTypes.string,
         list: PropTypes.instanceOf(Immutable.List).isRequired,
         onCreateNew: PropTypes.func.isRequired,
-        onStartEditing: PropTypes.func.isRequired
+        onStartEditing: PropTypes.func.isRequired,
+        selectedChannel: PropTypes.object.isRequired,
+        onSelectChannel: PropTypes.func.isRequired
     };
-
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            list: this._loadInitialChannelList(),
-            selectedChannel: null
-        };
-    }
-
-    getSelectedChannel() {
-        if (this.state.selectedChannel) {
-            return this.state.selectedChannel;
-        }
-        else if (this.state.list[0]) {
-            return this.state.list[0];
-        }
-        else return (
-                {
-                    id: uuidv4(),
-                    title: 'Empty channel',
-                    messageList: Immutable.List()
-                }
-
-            )
-
-    }
-
-    setSelectedChannel(channel) {
-        this.setState((previousState) => ({
-            list: previousState.list,
-            editedChannelId: previousState.editedChannelId,
-            selectedChannel: channel
-        }));
-    }
-
 
     componentWillUpdate(nextProps) {
         if (this.props.list !== nextProps.list) {
             localStorage.setItem('channelList', JSON.stringify(nextProps.list.toJS()));
         }
     }
-
-    _loadInitialChannelList = () => {
-        const storedListJSON = localStorage.getItem('channelList');
-        return storedListJSON ? Immutable.List(JSON.parse(storedListJSON)) : this._getDefaultChannelList();
-    };
-
-    _getDefaultChannelList = () => {
-        return Immutable.List([
-            {
-                id: uuidv4(),
-                title: 'First channel',
-                messageList: Immutable.List()
-            },
-            {
-                id: uuidv4(),
-                title: 'Second channel',
-                messageList: Immutable.List()
-            }
-        ]);
-    };
 
     _onAddClick = () => {
         const itemId = uuidv4();
@@ -95,7 +42,7 @@ export class ChannelList extends React.Component {
             return (
                 (<ChannelItem key={item.id}
                               onExpand={this.props.onStartEditing}
-                              onClick={() => this.setSelectedChannel(item)} item={item}/>));
+                              onClick={() => this.props.onSelectChannel(item)} item={item}/>));
         });
         return (
             <div>
@@ -111,7 +58,7 @@ export class ChannelList extends React.Component {
                     </button>
                 </div>
                 <div className="rightPanel">
-                    <MessageList channel={this.getSelectedChannel()}/>
+                    <MessageList channel={this.props.selectedChannel}/>
                 </div>
             </div>
         )

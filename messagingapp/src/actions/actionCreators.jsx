@@ -3,12 +3,10 @@ import {
     CANCEL_EDITING_CHANNEL,
     CHANNEL_CREATE,
     CHANNEL_DELETE,
-    CHANNEL_UPDATE,
-    MESSAGE_CREATE,
-    MESSAGE_DELETE, MESSAGE_SEND,
+    CHANNEL_UPDATE, MESSAGE_SEND,
     INPUT_CHANGED,
     MESSAGE_UPDATE,
-    START_EDITING_CHANNEL
+    START_EDITING_CHANNEL, CHANNEL_SWITCH, MESSAGE_CREATE, MESSAGE_DELETE
 } from '../constants/actionTypes';
 import {BLANK} from "../utils/constants";
 
@@ -83,5 +81,12 @@ export const updateMessage = (message) => ({
     type: MESSAGE_UPDATE,
     payload: {
         message
+    }
+});
+
+export const switchChannel = (channel) => ({
+    type: CHANNEL_SWITCH,
+    payload: {
+        channel
     }
 });

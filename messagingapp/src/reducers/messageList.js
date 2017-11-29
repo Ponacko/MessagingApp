@@ -2,11 +2,14 @@ import * as Immutable from 'immutable';
 import {
     MESSAGE_CREATE,
     MESSAGE_UPDATE,
-    MESSAGE_DELETE
+    MESSAGE_DELETE, CHANNEL_SWITCH
 } from "../constants/actionTypes";
+import {getInitialChannelMessages} from "../utils/getInitialChannelMessages";
 
 export const messageList = (previousState = Immutable.List(), action) => {
     switch (action.type){
+        case CHANNEL_SWITCH:
+            return getInitialChannelMessages(action.payload.channel);
         case MESSAGE_CREATE:
             console.log({...action.payload.item});
             return previousState.push({ ...action.payload.item});

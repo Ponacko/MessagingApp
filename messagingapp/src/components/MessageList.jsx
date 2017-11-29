@@ -4,59 +4,25 @@ import uuidv4 from 'uuid/v4';
 import {Message} from "./Message";
 import {MessagePanel} from "../containers-redux/MessagePanel";
 import PropTypes from 'prop-types';
+import {getInitialChannelMessages} from "../utils/getInitialChannelMessages"
 
 export class MessageList extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            channel: this._getDefaultChannel,
-            list: this._loadInitialChannelMessages(this._getDefaultChannel),
-        };
-    }
-    
-    _getDefaultChannel() {
-        return {
-            id: uuidv4(),
-            title: "Empty channel",
-            messageList: Immutable.List()
-        }
-    }
 
     static propTypes = {
         channel: PropTypes.shape({
             id: PropTypes.string.isRequired,
             title: PropTypes.string.isRequired,
-            messageList: PropTypes.instanceOf(Immutable.Iterable),
             onCreateNew: PropTypes.func.isRequired,
-        }).isRequired
+        }).isRequired,
+        list: PropTypes.instanceOf(Immutable.List).isRequired
     };
 
-    componentWillUpdate(nextProps, nextState) {
-        if (this.state.list !== nextState.list) {
-            const json = (this.state.channel.id === nextState.channel.id)? nextState.list : this.state.list;
-            localStorage.setItem('messages' + this.state.channel.id, JSON.stringify(json.toJS()));
-            console.log('saving' + nextState.list.toJS() + ' messages to' +  this.state.channel.title);
+    componentWillUpdate(nextProps) {
+        if (this.props.list !== nextProps.list && this.props.channel.id === nextProps.channel.id) {
+            console.log(nextProps.list);
+            localStorage.setItem('messages' + this.props.channel.id, JSON.stringify(nextProps.list.toJS()));
         }
     }
-
-    componentWillReceiveProps(props) {
-        console.log('props to' + props.channel.title);
-        this.setState({
-            channel: props.channel,
-            list: this._loadInitialChannelMessages(props.channel),
-        });
-    }
-
-    _loadInitialChannelMessages = (channel) => {
-        let storedListJSON = null;
-        if (channel) {
-            console.log('list to' + channel.title);
-            storedListJSON = localStorage.getItem('messages' + channel.id);
-            console.log('loading messages' + channel.title);
-        }
-        return storedListJSON ? Immutable.List(JSON.parse(storedListJSON)) : Immutable.List();
-
-    };
 
     _addToList = (x) => {
         const id = uuidv4();
@@ -75,7 +41,7 @@ export class MessageList extends React.Component {
             return (<Message key={item.id} item={item}/>)
         });
         return <div className="list-group messages">
-            {this.state.channel.title}
+            {this.props.channel.title}
             {messages}
             <div className="bottomPanel">
                 <MessagePanel onSend={this._addToList}/>
