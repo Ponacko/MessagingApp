@@ -6,6 +6,8 @@ import {MessageList} from "../containers-redux/MessageList";
 import {ChannelItem} from "../containers-redux/ChannelItem";
 import {ChannelEditedItem} from "../containers-redux/ChannelEditedItem";
 import {getInitialChannels} from "../utils/getInitialChannels";
+import {LogoutButton} from "../containers-redux/app/LogoutButton";
+
 
 export class ChannelList extends React.Component {
     static propTypes = {
@@ -56,6 +58,7 @@ export class ChannelList extends React.Component {
                         className="btn btn-primary">
                         <span className="glyphicon glyphicon-plus"/>
                     </button>
+                    <LogoutButton />
                 </div>
                 <div className="rightPanel">
                     <MessageList channel={this.props.selectedChannel}/>

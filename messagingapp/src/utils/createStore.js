@@ -2,11 +2,14 @@ import {
     compose,
     createStore as createReduxStore
 } from 'redux';
-import { connectRouter } from 'connected-react-router';
-import { app } from '../reducers/app';
+import {connectRouter, routerMiddleware} from 'connected-react-router';
+import {app} from '../reducers/app';
+import logger from 'redux-logger';
 import {defaultChannel, getInitialChannelMessages} from "./getInitialChannelMessages";
 import {getInitialChannels} from "./getInitialChannels";
+import applyMiddleware from "redux/es/applyMiddleware";
 
+const thunk = require('redux-thunk').default;
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const initialState = {
@@ -18,8 +21,11 @@ const initialState = {
 };
 
 export const createStore = (history) => {
-
+    const router = routerMiddleware(history);
+    const middleware = [router, thunk, logger];
     return createReduxStore(
         connectRouter(history)(app),
-        initialState);
+        initialState,
+        composeEnhancers(applyMiddleware(...middleware))
+    );
 };

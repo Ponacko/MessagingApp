@@ -8,12 +8,13 @@ import {app} from "./reducers/app";
 import {ChannelListRedux} from "./containers-redux/ChannelList";
 import { Route } from 'react-router-dom';
 import * as routes from "./constants/routes";
+import {LayoutSelector} from "./containers-redux/LayoutSelector";
 
 
 class App extends Component {
     render() {
         return <div className="App">
-            <Route exact path={routes.ROOT} component={ChannelListRedux} key="default" />
+            <LayoutSelector />
         </div>;
     }
 }

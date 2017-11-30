@@ -1,18 +1,18 @@
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
-import { uuid } from '../../utils/uuidGenerator';
+import uuidv4 from 'uuid/v4';
 
 class LoginForm extends React.PureComponent {
     static propTypes = {
-        onSumbit: PropTypes.func.isRequired,
+        onSubmit: PropTypes.func.isRequired,
     };
 
     componentWillMount() {
-        this.setState(() => ({ componentId: uuid() }));
+        this.setState(() => ({componentId: uuidv4()}));
     }
 
     render() {
-        const { componentId } = this.state;
+        const {componentId} = this.state;
         const loginId = `${componentId}_login`;
 
         return (
@@ -23,13 +23,15 @@ class LoginForm extends React.PureComponent {
                         <div className="input-group-addon">
                             <span className="glyphicon glyphicon-envelope" aria-hidden="true"/>
                         </div>
-                        <input className="form-control" type="email" id={loginId} placeholder="undefined@null.zero" readOnly />
+                        <input className="form-control" type="email" id={loginId} placeholder="undefined@null.zero"
+                               readOnly/>
                     </div>
                 </div>
-                <button className="btn btn-success btn-lg" onClick={this.props.onSumbit}>Come on in</button>
+                <button type="button" className="btn btn-success btn-lg" onClick={this.props.onSubmit}>Come on in
+                </button>
             </form>
         );
     }
 }
 
-export { LoginForm };
+export {LoginForm};

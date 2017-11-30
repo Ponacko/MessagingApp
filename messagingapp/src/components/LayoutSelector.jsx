@@ -4,7 +4,6 @@ import {
     Route,
     Switch
 } from 'react-router-dom';
-import { ContentLayout } from './app/ContentLayout.jsx';
 import { LoginLayout } from './login/LoginLayout.jsx';
 import { AuthenticatedRoute } from './app/AuthenticatedRoute.jsx';
 import * as routes from '../constants/routes';
