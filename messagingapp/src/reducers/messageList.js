@@ -11,7 +11,7 @@ export const messageList = (previousState = Immutable.List(), action) => {
         case CHANNEL_SWITCH:
             return getInitialChannelMessages(action.payload.channel);
         case CHANNEL_UPDATE:
-            return Immutable.List();
+            return getInitialChannelMessages(action.payload.channel);
         case MESSAGE_CREATE:
             console.log({...action.payload.item});
             return previousState.push({ ...action.payload.item});
