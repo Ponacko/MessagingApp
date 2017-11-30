@@ -8,6 +8,7 @@ import logger from 'redux-logger';
 import {defaultChannel, getInitialChannelMessages} from "./getInitialChannelMessages";
 import {getInitialChannels} from "./getInitialChannels";
 import applyMiddleware from "redux/es/applyMiddleware";
+import {getPersistedToken} from "./getPersistedToken";
 
 const thunk = require('redux-thunk').default;
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -16,7 +17,10 @@ const initialState = {
     chatApp: {
         channelList: getInitialChannels(),
         messageList: getInitialChannelMessages(),
-        selectedChannel: defaultChannel
+        selectedChannel: defaultChannel,
+        shared: {
+            token: getPersistedToken()
+        }
     }
 };
 
