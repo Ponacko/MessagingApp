@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types'
 
-export class ChannelEditedItem extends React.Component{
+export class ChannelEditedItem extends React.Component {
     static propTypes = {
         item: PropTypes.shape({
             id: PropTypes.string.isRequired,
@@ -38,21 +38,23 @@ export class ChannelEditedItem extends React.Component{
         }
     }
 
-    render(){
+    render() {
         return (
-            <a href="#" className="list-group-item list-group-item-action disabled">
-                <form>
-                    <div className="form-group">
-                        <label htmlFor="title">Name</label>
+            <div href="#" className="list-group-item list-group-item-action">
+                <i className="glyphicon glyphicon-chevron-up pull-left" aria-hidden="true"
+                   onClick={this.props.onCancel}/>
+                <div className="form-group">
+                    <label htmlFor="title">Name</label><br/>
+                    <div className="col-sm-10">
                         <input type="text" className="form-control" id="title" value={this.state.editedItem.title}
                                onChange={this._onTitleChange}/>
                     </div>
-                    <button className="btn btn-primary btn-sm" onClick={() => this.props.onSave(this.state.editedItem)}>
-                        Save
-                    </button>
-                    <button className="btn btn-default btn-sm" onClick={this.props.onCancel}>Cancel</button>
-                </form>
-            </a>
+                    <i className="btn btn-primary glyphicon glyphicon-ok pull-right"
+                       onClick={() => this.props.onSave(this.state.editedItem)}/>
+                    <br/>
+
+                </div>
+            </div>
         )
     }
 }

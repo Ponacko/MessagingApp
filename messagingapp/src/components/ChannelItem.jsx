@@ -16,14 +16,15 @@ export class ChannelItem extends React.Component{
     render(){
         return (
             <div>
-                <a href="#" className="list-group-item list-group-item-action"
-                   onClick={this.props.onClick}
-                >
-                    <i className="glyphicon glyphicon-edit" aria-hidden="true"
+                <a className="list-group-item list-group-item-action" >
+                    <i className="glyphicon glyphicon-chevron-down pull-left" aria-hidden="true"
                        onClick={() => this.props.onExpand(this.props.item.id)}/>
-                    {' '}{this.props.item.title}{' '}
-                    <i className="glyphicon glyphicon-remove" aria-hidden="true"
+                    <div className="container col-lg-10 text-center" onClick={this.props.onClick}>
+                    {' '}{this.props.item.title} {' '}
+                    </div>
+                    <i className="glyphicon glyphicon-remove pull-right" aria-hidden="true"
                        onClick={() => this.props.onDelete(this.props.item.id)}/>
+                    <br/>
                 </a>
             </div>
         );
