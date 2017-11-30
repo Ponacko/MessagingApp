@@ -6,12 +6,14 @@ import {getInitialChannels} from "./utils/getInitialChannels";
 import createStore from "redux/es/createStore";
 import {app} from "./reducers/app";
 import {ChannelListRedux} from "./containers-redux/ChannelList";
+import { Route } from 'react-router-dom';
+import * as routes from "./constants/routes";
 
 
 class App extends Component {
     render() {
         return <div className="App">
-            <ChannelListRedux/>
+            <Route exact path={routes.ROOT} component={ChannelListRedux} key="default" />
         </div>;
     }
 }
