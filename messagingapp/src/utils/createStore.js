@@ -1,7 +1,4 @@
-import {
-    compose,
-    createStore as createReduxStore
-} from 'redux';
+import {compose, createStore as createReduxStore} from 'redux';
 import {connectRouter, routerMiddleware} from 'connected-react-router';
 import {app} from '../reducers/app';
 import logger from 'redux-logger';
@@ -18,9 +15,9 @@ const initialState = {
         channelList: getInitialChannels(),
         messageList: getInitialChannelMessages(),
         selectedChannel: defaultChannel,
-        shared: {
-            token: getPersistedToken()
-        }
+    },
+    shared: {
+        token: getPersistedToken()
     }
 };
 
