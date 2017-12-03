@@ -6,7 +6,7 @@ import {
     CHANNEL_UPDATE, MESSAGE_SEND,
     INPUT_CHANGED,
     MESSAGE_UPDATE,
-    START_EDITING_CHANNEL, CHANNEL_SWITCH, MESSAGE_CREATE, MESSAGE_DELETE
+    START_EDITING_CHANNEL, CHANNEL_SWITCH, MESSAGE_CREATE, MESSAGE_DELETE, MESSAGE_DOWNVOTE, MESSAGE_UPVOTE
 } from '../constants/actionTypes';
 import {BLANK} from "../utils/constants";
 
@@ -82,6 +82,14 @@ export const updateMessage = (message) => ({
     payload: {
         message
     }
+});
+
+export const upvoteMessage = (increment) => ({
+    type: MESSAGE_UPVOTE,
+});
+
+export const downvoteMessage = (increment) => ({
+    type: MESSAGE_DOWNVOTE,
 });
 
 export const switchChannel = (channel) => ({

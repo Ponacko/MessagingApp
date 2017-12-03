@@ -30,6 +30,8 @@ export class MessagePanel extends React.Component{
     _sendMessage = () => {
         if (this.props.message) {
             this.props.onSend(this.props.message);
+        } else {
+            alert("You can't send empty message");
         }
     };
 
@@ -38,7 +40,7 @@ export class MessagePanel extends React.Component{
             <textarea className="messageTextArea messagePanel"
                    type="text"
                    id="5"
-                   placeholder="Enter message here"
+                   placeholder="Type a message"
                    onKeyPress={this._sendWithKey}
                    value={this.props.message}
                    onChange={(event) => this.props.onChange(event.target.value)}/>

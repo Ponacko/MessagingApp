@@ -29,7 +29,8 @@ export class MessageList extends React.Component {
         const message = {
             id: id,
             title: x,
-            datum: new Date().toLocaleTimeString()
+            datum: new Date().toLocaleTimeString(),
+            counter: 0
         };
         return this.props.onCreateNew(message);
     };
