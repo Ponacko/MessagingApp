@@ -1,7 +1,7 @@
 import * as React from "react/cjs/react.production.min";
 import Immutable from 'immutable';
 import uuidv4 from 'uuid/v4';
-import {Message} from "./Message";
+import {Message} from "../containers-redux/Message";
 import {MessagePanel} from "../containers-redux/MessagePanel";
 import PropTypes from 'prop-types';
 import {getInitialChannelMessages} from "../utils/getInitialChannelMessages"
