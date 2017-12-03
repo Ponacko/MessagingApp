@@ -21,10 +21,10 @@ export const messageList = (previousState = Immutable.List(), action) => {
             return messageIndex >= 0
                 ? previousState.update(messageIndex, previousMessage => ({...previousMessage, ...message}))
                 : previousState;*/
-            previousState.filterNot(message => message.id === action.payload.id);
-        }
-        case MESSAGE_UPDATE:
             return previousState.filterNot(message => message.id === action.payload.id);
+        }
+        /*case MESSAGE_UPDATE:
+            return previousState.filterNot(message => message.id === action.payload.id);*/
         default:
             return previousState;
     }
