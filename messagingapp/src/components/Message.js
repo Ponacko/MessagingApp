@@ -11,12 +11,15 @@ export class Message extends React.Component{
         onDelete: PropTypes.func.isRequired
     };
 
-
+//https://bootsnipp.com/snippets/featured/simple-chat
     render(){
         var date = new Date();
         return(
+            <li style={{width:"100%"}}>
             <div className="message msj-rta macro">
-                {this.props.item.datum} {' : '}{this.props.item.title}
+                <div class="text text-l">
+                    <p><small>{this.props.item.datum}</small></p><p>{this.props.item.title}</p>
+                </div>
                 <button
                     type="button"
                     //onClick={this._onAddClick}
@@ -32,6 +35,7 @@ export class Message extends React.Component{
                 <i className="glyphicon glyphicon-remove pull-right" aria-hidden="true"
                    onClick={() => this.props.onDelete(this.props.item.id)}/>
             </div>
+            </li>
         );
     }
 }
