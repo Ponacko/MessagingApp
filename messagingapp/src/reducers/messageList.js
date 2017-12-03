@@ -16,11 +16,12 @@ export const messageList = (previousState = Immutable.List(), action) => {
             console.log({...action.payload.item});
             return previousState.push({ ...action.payload.item});
         case MESSAGE_DELETE: {
-            const message = action.payload.message;
-            const messageIndex = previousState.findIndex(i => i.id === message.id);
+            /*const message = action.payload.id;
+            const messageIndex = previousState.findIndex(i => i.id === message);
             return messageIndex >= 0
                 ? previousState.update(messageIndex, previousMessage => ({...previousMessage, ...message}))
-                : previousState;
+                : previousState;*/
+            previousState.filterNot(message => message.id === action.payload.id);
         }
         case MESSAGE_UPDATE:
             return previousState.filterNot(message => message.id === action.payload.id);
