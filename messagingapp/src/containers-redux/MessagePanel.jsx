@@ -8,7 +8,6 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchProps = (dispatch) => ({
-   //onSend: (message) => dispatch(createNewMessage(message)),
    onChange: (event) => dispatch(changeInput(event)),
 });
 
