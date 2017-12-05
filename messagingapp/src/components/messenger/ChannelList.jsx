@@ -2,11 +2,11 @@ import * as React from "react/cjs/react.production.min";
 import uuidv4 from 'uuid/v4';
 import Immutable from 'immutable';
 import PropTypes from 'prop-types';
-import {MessageList} from "../containers-redux/MessageList";
-import {ChannelItem} from "../containers-redux/ChannelItem";
-import {ChannelEditedItem} from "../containers-redux/ChannelEditedItem";
-import {getInitialChannels} from "../utils/getInitialChannels";
-import {LogoutButton} from "../containers-redux/app/LogoutButton";
+import {MessageList} from "../../containers-redux/messenger/MessageList";
+import {ChannelItem} from "../../containers-redux/messenger/ChannelItem";
+import {ChannelEditedItem} from "../../containers-redux/messenger/ChannelEditedItem";
+import {getInitialChannels} from "../../utils/getInitialChannels";
+import {LogoutButton} from "../../containers-redux/app/LogoutButton";
 
 
 export class ChannelList extends React.Component {

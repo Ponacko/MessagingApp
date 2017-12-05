@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
-import { MessagePanel } from '../components/MessagePanel';
+import { MessagePanel } from '../../components/messenger/MessagePanel';
 
-import {sendMessage, changeInput, createNewMessage} from '../actions/actionCreators';
+import {sendMessage, changeInput, createNewMessage} from '../../actions/actionCreators';
 
 const mapStateToProps = (state) => ({
     message: state.chatApp.messagePanel,

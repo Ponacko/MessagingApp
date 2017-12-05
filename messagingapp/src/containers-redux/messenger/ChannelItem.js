@@ -1,6 +1,6 @@
-import {deleteChannel, startEditingChannel} from "../actions/actionCreators";
+import {deleteChannel, startEditingChannel} from "../../actions/actionCreators";
 import connect from "react-redux/es/connect/connect";
-import {ChannelItem} from "../components/ChannelItem";
+import {ChannelItem} from "../../components/messenger/ChannelItem";
 
 const mapStateToProps = (state) => ({
     expandDisabled:  !!state.editedChannelId
