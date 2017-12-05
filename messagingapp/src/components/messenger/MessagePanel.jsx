@@ -1,6 +1,6 @@
 import * as React from "react/cjs/react.production.min";
 import PropTypes from 'prop-types';
-import {BLANK} from "../utils/constants";
+import {BLANK} from "../../utils/constants";
 
 export class MessagePanel extends React.Component{
 

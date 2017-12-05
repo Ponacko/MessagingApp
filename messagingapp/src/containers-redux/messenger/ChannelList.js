@@ -1,9 +1,9 @@
 import {
     cancelEditingChannel, createNewChannel, deleteChannel, startEditingChannel, switchChannel,
     updateChannel
-} from "../actions/actionCreators";
+} from "../../actions/actionCreators";
 import connect from "react-redux/es/connect/connect";
-import {ChannelList} from "../components/ChannelList";
+import {ChannelList} from "../../components/messenger/ChannelList";
 
 const mapStateToProps = (state) => ({
     list: state.chatApp.channelList,

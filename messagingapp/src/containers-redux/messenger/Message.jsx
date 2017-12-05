@@ -1,6 +1,6 @@
-import {deleteMessage, downvoteMessage, upvoteMessage} from "../actions/actionCreators";
+import {deleteMessage, downvoteMessage, upvoteMessage} from "../../actions/actionCreators";
 import connect from "react-redux/es/connect/connect";
-import {Message} from "../components/Message";
+import {Message} from "../../components/messenger/Message";
 
 const mapStateToProps = (state) => ({
     counter : state.chatApp.message

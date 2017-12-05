@@ -1,5 +1,5 @@
-import {cancelEditingChannel, updateChannel} from "../actions/actionCreators";
-import {ChannelEditedItem} from "../components/ChannelEditedItem";
+import {cancelEditingChannel, updateChannel} from "../../actions/actionCreators";
+import {ChannelEditedItem} from "../../components/messenger/ChannelEditedItem";
 import connect from "react-redux/es/connect/connect";
 
 const mapDispatchToProps = (dispatch) => ({

@@ -1,6 +1,6 @@
 import connect from "react-redux/es/connect/connect";
-import {createNewMessage} from "../actions/actionCreators";
-import {MessageList} from "../components/MessageList";
+import {createNewMessage} from "../../actions/actionCreators";
+import {MessageList} from "../../components/messenger/MessageList";
 
 const mapStateToProps = (state) => ({
     channel: state.chatApp.selectedChannel,

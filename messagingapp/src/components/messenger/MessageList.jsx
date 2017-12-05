@@ -1,10 +1,10 @@
 import * as React from "react/cjs/react.production.min";
 import Immutable from 'immutable';
 import uuidv4 from 'uuid/v4';
-import {Message} from "../containers-redux/Message";
-import {MessagePanel} from "../containers-redux/MessagePanel";
+import {Message} from "../../containers-redux/messenger/Message";
+import {MessagePanel} from "../../containers-redux/messenger/MessagePanel";
 import PropTypes from 'prop-types';
-import {getInitialChannelMessages} from "../utils/getInitialChannelMessages"
+import {getInitialChannelMessages} from "../../utils/getInitialChannelMessages"
 
 export class MessageList extends React.Component {
 
