@@ -1,12 +1,9 @@
 import * as Immutable from "immutable";
-import uuidv4 from 'uuid/v4';
 
-export const defaultChannel = {
-        id: uuidv4(),
-        title: "Empty channel"
-    };
+import {getInitialSelectedChannel} from "./getInitialSelectedChannel";
 
-export const getInitialChannelMessages = (channel = defaultChannel) => {
+
+export const getInitialChannelMessages = (channel = getInitialSelectedChannel()) => {
     let storedListJSON = null;
     if (channel) {
         console.log('list to' + channel.title);
