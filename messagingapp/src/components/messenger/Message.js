@@ -2,6 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 export class Message extends React.Component{
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            counter: props.item.counter
+        };
+    }
+
     static propTypes = {
         item: PropTypes.shape({
             id: PropTypes.string.isRequired,
@@ -10,12 +18,18 @@ export class Message extends React.Component{
             counter: PropTypes.number.isRequired
         }).isRequired,
         onDelete: PropTypes.func.isRequired,
-        onUpVote: PropTypes.func.isRequired,
-        onDownVote: PropTypes.func.isRequired,
     };
 
     _increment = () => {
-        this.props.onUpVote();
+        this.setState((previousState) => ({
+            counter: previousState.counter + 1
+        }));
+    };
+
+    _decrement = () => {
+        this.setState((previousState) => ({
+            counter: previousState.counter - 1
+        }));
     };
 
 //https://bootsnipp.com/snippets/featured/simple-chat
@@ -28,7 +42,7 @@ export class Message extends React.Component{
                     </p>
                     <p>{this.props.item.title}</p>
                 </div>
-                <p>{this.props.counter}</p>
+                <p>{this.state.counter}</p>
                 <button
                     type="button"
                     onClick={this._increment}
@@ -37,7 +51,7 @@ export class Message extends React.Component{
                 </button>
                 <button
                     type="button"
-                    onClick={() => this.props.onDownVote()}
+                    onClick={this._decrement}
                     className="btn btn-primary">
                     <span className="glyphicon glyphicon-download"/>
                 </button>
