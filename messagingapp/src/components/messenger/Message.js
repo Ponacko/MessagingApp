@@ -28,7 +28,7 @@ export class Message extends React.Component{
                     </p>
                     <p>{this.props.item.title}</p>
                 </div>
-                <p>{this.props.item.counter}</p>
+                <p>{this.props.counter}</p>
                 <button
                     type="button"
                     onClick={this._increment}
