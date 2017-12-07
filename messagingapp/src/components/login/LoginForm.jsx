@@ -3,6 +3,13 @@ import * as PropTypes from 'prop-types';
 import uuidv4 from 'uuid/v4';
 
 class LoginForm extends React.PureComponent {
+    constructor(props) {
+        super(props);
+        this.state = {
+            email: props.email,
+        };
+    }
+
     static propTypes = {
         onSubmit: PropTypes.func.isRequired,
     };
@@ -11,23 +18,32 @@ class LoginForm extends React.PureComponent {
         this.setState(() => ({componentId: uuidv4()}));
     }
 
-    render() {
-        const {componentId} = this.state;
-        const loginId = `${componentId}_login`;
+    _onChangeEmail = (event) => {
+        const value = event.target.value;
 
+        this.setState(() => ({
+                email: value
+            }
+        ));
+    };
+
+    render() {
         return (
             <form>
                 <div className="form-group">
-                    <label className="sr-only" htmlFor={loginId}>E-mail</label>
+                    <label className="sr-only">E-mail</label>
                     <div className="input-group">
                         <div className="input-group-addon">
                             <span className="glyphicon glyphicon-envelope" aria-hidden="true"/>
                         </div>
-                        <input className="form-control" type="email" id={loginId} placeholder="undefined@null.zero"
-                               />
+                        <input className="form-control" type="email" placeholder="undefined@null.zero"
+                               onChange={this._onChangeEmail}
+                               value={this.state.email}
+                        />
                     </div>
                 </div>
-                <button type="button" className="btn btn-success btn-lg" onClick={this.props.onSubmit}>Log in
+                <button type="button" className="btn btn-success btn-lg"
+                        onClick={() => this.props.onSubmit(this.state.email)}>Log in
                 </button>
             </form>
         );

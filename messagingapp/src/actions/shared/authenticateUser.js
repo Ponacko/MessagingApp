@@ -2,13 +2,12 @@ import {dismissError, failAuthentication, receiveValidToken, startAuthentication
 import {push} from 'connected-react-router';
 import * as keys from "../../constants/localStorageKeys";
 import {fetchAuthToken} from "../../utils/api/fetchAuthToken";
-import {USER_EMAIL} from "../../constants/api";
 import {FAILED_AUTHENTICATION_MESSAGE, MILLISECONDS_TO_AUTO_DISMISS_ERROR} from "../../constants/uiConstants";
 
-export const authenticateUser = (destinationLocation) =>
+export const authenticateUser = (destinationLocation, email) =>
     (dispatch) => {
         dispatch(startAuthentication());
-        return fetchAuthToken(USER_EMAIL)
+        return fetchAuthToken(email)
             .then((token) => {
                 dispatch(receiveValidToken(token));
                 dispatch(push(destinationLocation));

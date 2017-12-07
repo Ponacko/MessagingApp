@@ -27,7 +27,7 @@ const LoginLayout = ({from}) => {
                     <Loader stateLoadingSelector={state => state.shared.isAuthenticating}>
                         <h2>Messaging app</h2>
                         <div>
-                            <LoginForm from={originalLocation}/>
+                            <LoginForm from={originalLocation} email=""/>
                         </div>
                     </Loader>
                 </div>
