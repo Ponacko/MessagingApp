@@ -1,11 +1,13 @@
 import * as React from 'react';
-import { Route } from 'react-router-dom';
-import { Content } from './Content.jsx';
+import {Route} from 'react-router-dom';
+import {Content} from './Content.jsx';
+import {HeadInHelmet} from "../../containers-redux/shared/HeadInHelmet";
 
 const ContentLayout = () => (
-    <div className="row form-group">
-        <Content />
-    </div>
+<div className>
+    <HeadInHelmet />
+    <Content />
+</div>
 );
 
 export { ContentLayout };

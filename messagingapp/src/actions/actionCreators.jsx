@@ -3,12 +3,15 @@ import {
     CANCEL_EDITING_CHANNEL,
     CHANNEL_CREATE,
     CHANNEL_DELETE,
-    CHANNEL_UPDATE, MESSAGE_SEND,
+    CHANNEL_SWITCH,
+    CHANNEL_UPDATE,
     INPUT_CHANGED,
+    MESSAGE_CREATE,
+    MESSAGE_DELETE,
+    MESSAGE_SEND,
     MESSAGE_UPDATE,
-    START_EDITING_CHANNEL, CHANNEL_SWITCH, MESSAGE_CREATE, MESSAGE_DELETE, MESSAGE_DOWNVOTE, MESSAGE_UPVOTE
+    START_EDITING_CHANNEL
 } from '../constants/actionTypes';
-import {BLANK} from "../utils/constants";
 
 export const createNewChannel = (newChannel) => ({
     type: CHANNEL_CREATE,
@@ -50,7 +53,7 @@ export const sendMessage = (message) => ({
     payload: {
         message
     }
-})
+});
 
 
 export const changeInput = (string) => ({
@@ -82,14 +85,6 @@ export const updateMessage = (message) => ({
     payload: {
         message
     }
-});
-
-export const upvoteMessage = (increment) => ({
-    type: MESSAGE_UPVOTE,
-});
-
-export const downvoteMessage = (increment) => ({
-    type: MESSAGE_DOWNVOTE,
 });
 
 export const switchChannel = (channel) => ({

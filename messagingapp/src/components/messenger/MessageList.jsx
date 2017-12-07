@@ -4,7 +4,6 @@ import uuidv4 from 'uuid/v4';
 import {Message} from "../../containers-redux/messenger/Message";
 import {MessagePanel} from "../../containers-redux/messenger/MessagePanel";
 import PropTypes from 'prop-types';
-import {getInitialChannelMessages} from "../../utils/getInitialChannelMessages"
 
 export class MessageList extends React.Component {
 
@@ -35,11 +34,10 @@ export class MessageList extends React.Component {
         return this.props.onCreateNew(message);
     };
 
-
     render() {
         const {list} = this.props;
         const messages = list.map(item => {
-            return (<Message key={item.id} item={item}/>)
+            return (<Message key={item.id} item={item} />)
         });
         return <div className="list-group messages">
             {this.props.channel.title}

@@ -24,10 +24,10 @@ class LoginForm extends React.PureComponent {
                             <span className="glyphicon glyphicon-envelope" aria-hidden="true"/>
                         </div>
                         <input className="form-control" type="email" id={loginId} placeholder="undefined@null.zero"
-                               readOnly/>
+                               />
                     </div>
                 </div>
-                <button type="button" className="btn btn-success btn-lg" onClick={this.props.onSubmit}>Come on in
+                <button type="button" className="btn btn-success btn-lg" onClick={this.props.onSubmit}>Log in
                 </button>
             </form>
         );

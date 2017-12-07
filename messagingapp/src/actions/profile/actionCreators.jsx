@@ -1,5 +1,5 @@
 import * as actionTypes from '../../constants/actionTypes';
-import { errorActionFactory } from '../../utils/errorActionFactory';
+import {errorActionFactory} from '../../utils/errorActionFactory';
 
 export const updateProfileDetails = (details) => ({
     type: actionTypes.PROFILE_UPDATE_DETAILS,

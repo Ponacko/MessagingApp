@@ -1,27 +1,12 @@
-import {
-    startSubmit,
-    stopSubmit
-} from 'redux-form';
-import {
-    updateProfileDetails,
-    failUploadingProfileDetails,
-} from './actionCreators';
-import {
-    USER_EMAIL,
-    createApiUserUri
-} from '../../constants/api';
-import { dismissError } from '../shared/actionCreators';
-import { fetchRequest } from '../../utils/api/fetchRequest';
-import {
-    convertFromServerDetails,
-    convertToServerDetails
-} from '../../utils/api/conversions/profileDetails';
-import { DETAILS_FORM_NAME } from '../../constants/formNames';
-import { performAuthorizedRequest } from './performAuthorizedRequest';
-import {
-    FAILED_UPDATE_DETAILS_MESSAGE,
-    MILISECONDS_TO_AUTO_DISMISS_ERROR,
-} from '../../constants/uiConstants';
+import {startSubmit} from 'redux-form';
+import {failUploadingProfileDetails, updateProfileDetails,} from './actionCreators';
+import {createApiUserUri, USER_EMAIL} from '../../constants/api';
+import {dismissError} from '../shared/actionCreators';
+import {fetchRequest} from '../../utils/api/fetchRequest';
+import {convertFromServerDetails, convertToServerDetails} from '../../utils/api/conversions/profileDetails';
+import {DETAILS_FORM_NAME} from '../../constants/formNames';
+import {performAuthorizedRequest} from './performAuthorizedRequest';
+import {FAILED_UPDATE_DETAILS_MESSAGE, MILLISECONDS_TO_AUTO_DISMISS_ERROR,} from '../../constants/uiConstants';
 
 export const uploadUserDetails = (details) =>
     async (dispatch, getState) => {
@@ -40,7 +25,7 @@ export const uploadUserDetails = (details) =>
         }
         catch (error) {
             const dispatchedAction = dispatch(failUploadingProfileDetails(FAILED_UPDATE_DETAILS_MESSAGE, error));
-            setTimeout(() => dispatch(dismissError(dispatchedAction.payload.error.id)), MILISECONDS_TO_AUTO_DISMISS_ERROR);
+            setTimeout(() => dispatch(dismissError(dispatchedAction.payload.error.id)), MILLISECONDS_TO_AUTO_DISMISS_ERROR);
         }
 
         return dispatch(DETAILS_FORM_NAME);

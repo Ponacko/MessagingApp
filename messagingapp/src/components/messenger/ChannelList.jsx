@@ -7,6 +7,7 @@ import {ChannelItem} from "../../containers-redux/messenger/ChannelItem";
 import {ChannelEditedItem} from "../../containers-redux/messenger/ChannelEditedItem";
 import {getInitialChannels} from "../../utils/getInitialChannels";
 import {LogoutButton} from "../../containers-redux/app/LogoutButton";
+import {selectedChannel} from "../../reducers/selectedChannel";
 
 
 export class ChannelList extends React.Component {
@@ -22,6 +23,9 @@ export class ChannelList extends React.Component {
     componentWillUpdate(nextProps) {
         if (this.props.list !== nextProps.list) {
             localStorage.setItem('channelList', JSON.stringify(nextProps.list.toJS()));
+        }
+        if (this.props.selectedChannel !== nextProps.selectedChannel){
+            localStorage.setItem('selectedChannel', JSON.stringify(nextProps.selectedChannel));
         }
     }
 

@@ -3,9 +3,9 @@ export const validateResponse = (response) => {
         return response.json();
     }
     else {
-        const errorMessge = response.statusText || `Something went wrong (ending up in ${response.status})`;
+        const errorMessage = response.statusText || `Something went wrong (ending up in ${response.status})`;
 
-        const error = new Error(errorMessge);
+        const error = new Error(errorMessage);
         error.statusCode = response.status;
 
         throw error;
