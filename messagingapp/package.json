@@ -8,7 +8,9 @@
     "react-redux": "^5.0.6",
     "react-scripts": "1.0.14",
     "redux": "^3.7.2",
-    "react-redux/es/connect/connect": "latest"
+    "react-redux/es/connect/connect": "latest",
+    "react-loader-advanced": "latest",
+    "prop-types": "latest"
   },
   "scripts": {
     "start": "react-scripts start",

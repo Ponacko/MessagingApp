@@ -1,12 +1,20 @@
-import { receiveValidToken } from './actionCreators';
-import { push } from 'connected-react-router';
+import {failAuthentication, receiveValidToken, startAuthentication} from './actionCreators';
+import {push} from 'connected-react-router';
 import * as keys from "../../constants/localStorageKeys";
+import {fetchAuthToken} from "../../utils/api/fetchAuthToken";
+import {USER_EMAIL} from "../../constants/api";
+import {FAILED_AUTHENTICATION_MESSAGE} from "../../constants/uiConstants";
 
 export const authenticateUser = (destinationLocation) =>
-    (dispatch, getState) => {
-        dispatch(receiveValidToken());
-        console.log(getState().shared.token);
-        localStorage.setItem(keys.SHARED_TOKEN, JSON.stringify(getState().shared.token));
-        localStorage.setItem(keys.SHARED_TOKEN_TIMESTAMP, JSON.stringify(new Date().getTime()));
-        dispatch(push(destinationLocation));
+    (dispatch) => {
+        dispatch(startAuthentication());
+        return fetchAuthToken(USER_EMAIL)
+            .then((token) => {
+                dispatch(receiveValidToken(token));
+                dispatch(push(destinationLocation));
+
+                localStorage.setItem(keys.SHARED_TOKEN, JSON.stringify(token));
+                localStorage.setItem(keys.SHARED_TOKEN_TIMESTAMP, JSON.stringify(new Date().getTime()));
+            })
+            .catch(error => dispatch(failAuthentication(FAILED_AUTHENTICATION_MESSAGE, error)));
     };

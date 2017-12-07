@@ -1,16 +1,17 @@
 import {
     SHARED_AUTHENTICATION_FAILED,
-    SHARED_INVALIDATE_TOKEN,
+    SHARED_AUTHENTICATION_STARTED,
     SHARED_RECEIVE_TOKEN,
 } from '../../constants/actionTypes';
 
-export const token = (prevState = null, action) => {
+export const isAuthenticating = (prevState = false, action) => {
     switch (action.type) {
+        case SHARED_AUTHENTICATION_STARTED:
+            return true;
+
         case SHARED_RECEIVE_TOKEN:
-            return action.payload.token;
         case SHARED_AUTHENTICATION_FAILED:
-        case SHARED_INVALIDATE_TOKEN:
-            return null;
+            return false;
 
         default:
             return prevState;

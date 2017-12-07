@@ -27,7 +27,7 @@ class LoginForm extends React.PureComponent {
                                readOnly/>
                     </div>
                 </div>
-                <button type="button" className="btn btn-success btn-lg" onClick={this.props.onSubmit}>Come on in
+                <button type="button" className="btn btn-success btn-lg" onClick={this.props.onSubmit}>Log in
                 </button>
             </form>
         );
