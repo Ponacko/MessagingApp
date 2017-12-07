@@ -1,7 +1,7 @@
 import {
     startFetchingProfileAvatar,
     failFetchingProfileAvatar,
-    updateProfileaAvatar
+    updateProfileAvatar
 } from './actionCreators';
 import { createApiFilerUri } from '../../constants/api';
 import { fetchReceive } from '../../utils/api/fetchReceive';
@@ -18,7 +18,7 @@ export const fetchUserAvatar = (avatarId) =>
         try {
             return await performAuthorizedRequest(dispatch, async () => {
                 const avatarUri = await fetchReceive(requestUri, authToken);
-                dispatch(updateProfileaAvatar(avatarUri));
+                dispatch(updateProfileAvatar(avatarUri));
             });
         }
         catch (error) {

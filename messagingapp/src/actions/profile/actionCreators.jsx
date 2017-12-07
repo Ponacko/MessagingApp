@@ -8,7 +8,7 @@ export const updateProfileDetails = (details) => ({
     }
 });
 
-export const updateProfileaAvatar = (avatarUri) => ({
+export const updateProfileAvatar = (avatarUri) => ({
     type: actionTypes.PROFILE_UPDATE_AVATAR,
     payload: {
         avatarUri,

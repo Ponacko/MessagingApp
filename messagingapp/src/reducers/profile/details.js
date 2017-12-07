@@ -9,7 +9,7 @@ const defaultDetails = {
 export const details = (prevState = defaultDetails, action) => {
     switch (action.type) {
         case PROFILE_UPDATE_DETAILS:
-        return payload.action.details;
+        return action.payload.details;
 
         default:
             return prevState;
