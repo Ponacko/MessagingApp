@@ -9,7 +9,6 @@ import {getInitialChannels} from "../../utils/getInitialChannels";
 import {LogoutButton} from "../../containers-redux/app/LogoutButton";
 import {selectedChannel} from "../../reducers/selectedChannel";
 
-
 export class ChannelList extends React.Component {
     static propTypes = {
         editedChannelId: PropTypes.string,
@@ -64,7 +63,7 @@ export class ChannelList extends React.Component {
                     </button>
                     <LogoutButton />
                 </div>
-                <div className="rightPanel">
+                <div className="middlepanel">
                     <MessageList channel={this.props.selectedChannel}/>
                 </div>
             </div>

@@ -11,7 +11,7 @@ body {
   float: left;
 }
 
-.rightPanel {
+.middlepanel {
   margin-left: 25%;
     height: 80%;
 }
@@ -69,11 +69,29 @@ body {
 }
 
 .text > p{
-    width:100%;margin-top:0;margin-bottom:auto;line-height: 13px;font-size: 12px;
+    width:100%;
+    margin-top:0;
+    margin-bottom:auto;
+    line-height: 13px;
+    font-size: 20px;
 }
 
 li {
     list-style: none;
     margin: 0;
     padding: 0;
+}
+
+.numberCircle {
+    border-radius: 90%;
+
+    width: 36px;
+    height: 36px;
+    padding: 8px;
+
+    background: #fff;
+    border: 3px solid darkblue;
+    color: black;
+    text-align: center;
+
 }
