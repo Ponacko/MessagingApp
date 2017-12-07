@@ -42,7 +42,7 @@ export class Message extends React.Component{
                     </p>
                     <p>{this.props.item.title}</p>
                 </div>
-                <p>{this.state.counter}</p>
+                <p className="numberCircle">{this.state.counter}</p>
                 <button
                     type="button"
                     onClick={this._increment}
