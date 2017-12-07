@@ -1,12 +1,8 @@
-import {
-    startFetchingProfileAvatar,
-    failFetchingProfileAvatar,
-    updateProfileaAvatar
-} from './actionCreators';
-import { createApiFilerUri } from '../../constants/api';
-import { fetchReceive } from '../../utils/api/fetchReceive';
-import { FAILED_FETCH_AVATAR_MESSAGE } from '../../constants/uiConstants';
-import { performAuthorizedRequest } from './performAuthorizedRequest';
+import {failFetchingProfileAvatar, startFetchingProfileAvatar, updateProfileAvatar} from './actionCreators';
+import {createApiFilerUri} from '../../constants/api';
+import {fetchReceive} from '../../utils/api/fetchReceive';
+import {FAILED_FETCH_AVATAR_MESSAGE} from '../../constants/uiConstants';
+import {performAuthorizedRequest} from './performAuthorizedRequest';
 
 export const fetchUserAvatar = (avatarId) =>
     async (dispatch, getState) => {
@@ -18,7 +14,7 @@ export const fetchUserAvatar = (avatarId) =>
         try {
             return await performAuthorizedRequest(dispatch, async () => {
                 const avatarUri = await fetchReceive(requestUri, authToken);
-                dispatch(updateProfileaAvatar(avatarUri));
+                dispatch(updateProfileAvatar(avatarUri));
             });
         }
         catch (error) {
