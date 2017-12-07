@@ -12,6 +12,7 @@ class LoginForm extends React.PureComponent {
 
     static propTypes = {
         onSubmit: PropTypes.func.isRequired,
+        onRegister: PropTypes.func.isRequired,
     };
 
     componentWillMount() {
@@ -44,6 +45,9 @@ class LoginForm extends React.PureComponent {
                 </div>
                 <button type="button" className="btn btn-success btn-lg"
                         onClick={() => this.props.onSubmit(this.state.email)}>Log in
+                </button>
+                <button type="button" className="btn btn-primary btn-lg"
+                        onClick={() => this.props.onRegister(this.state.email)}>Register
                 </button>
             </form>
         );
