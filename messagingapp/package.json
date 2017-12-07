@@ -10,7 +10,8 @@
     "redux": "^3.7.2",
     "react-redux/es/connect/connect": "latest",
     "react-loader-advanced": "latest",
-    "prop-types": "latest"
+    "prop-types": "latest",
+    "connected-react-router": "latest"
   },
   "scripts": {
     "start": "react-scripts start",
