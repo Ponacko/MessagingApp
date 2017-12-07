@@ -13,5 +13,5 @@ const rotate360 = keyframes`
 
 export const SavingIcon = styled.i`
     display: inline-block;
-        animation: ${rotate360} 0.4s linear infinite;
+        animation: ${rotate360} 0.3s linear infinite;
 `;

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+require.context('../../../static/', true);
 
 export class Message extends React.Component{
     constructor(props) {
@@ -36,6 +37,9 @@ export class Message extends React.Component{
     render(){
         return <li style={{width: "100%"}}>
             <div className="message msj-rta macro">
+                <div className="avatar">
+                    <img className="img-circle" style={{width:"100%"}} src="https://scontent-vie1-1.xx.fbcdn.net/v/t1.0-1/p40x40/11224381_10204322255883571_4459390670064219588_n.jpg?oh=b3f6079322c4ca97b1abce5989814eb2&oe=5AD61568" />
+                </div>
                 <div className="text text-l">
                     <p>
                         <small>{this.props.item.datum}</small>
