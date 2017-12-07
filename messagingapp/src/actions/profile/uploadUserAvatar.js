@@ -1,18 +1,10 @@
-import {
-    failUploadingProfileAvatar,
-    startUploadingProfileAvatar,
-} from './actionCreators';
-import {
-    dismissError,
-} from '../shared/actionCreators';
-import { performAuthorizedRequest } from './performAuthorizedRequest';
-import { fetchFileUpload } from '../../utils/api/fetchFileUpload';
-import { uploadUserDetails } from './uploadUserDetails';
-import { fetchUserAvatar } from './fetchUserAvatar';
-import {
-    FAILED_UPDATE_AVATAR_MESSAGE,
-    MILISECONDS_TO_AUTO_DISMISS_ERROR
-} from '../../constants/uiConstants';
+import {failUploadingProfileAvatar, startUploadingProfileAvatar,} from './actionCreators';
+import {dismissError,} from '../shared/actionCreators';
+import {performAuthorizedRequest} from './performAuthorizedRequest';
+import {fetchFileUpload} from '../../utils/api/fetchFileUpload';
+import {uploadUserDetails} from './uploadUserDetails';
+import {fetchUserAvatar} from './fetchUserAvatar';
+import {FAILED_UPDATE_AVATAR_MESSAGE, MILLISECONDS_TO_AUTO_DISMISS_ERROR} from '../../constants/uiConstants';
 
 export const uploadUserAvatar = (file) =>
     async (dispatch, getState) => {
@@ -41,7 +33,7 @@ export const uploadUserAvatar = (file) =>
         }
         catch (error) {
             const dispatchedAction = dispatch(failUploadingProfileAvatar(FAILED_UPDATE_AVATAR_MESSAGE, error));
-            setTimeout(() => dispatch(dismissError(dispatchedAction.payload.error.id)), MILISECONDS_TO_AUTO_DISMISS_ERROR);
+            setTimeout(() => dispatch(dismissError(dispatchedAction.payload.error.id)), MILLISECONDS_TO_AUTO_DISMISS_ERROR);
             return dispatchedAction;
         }
     };
