@@ -1,16 +1,17 @@
 import * as actionTypes from '../../constants/actionTypes';
 import {SHARED_INVALIDATE_TOKEN, SHARED_RECEIVE_TOKEN} from '../../constants/actionTypes';
 import uuidv4 from 'uuid/v4';
+import { errorActionFactory } from '../../utils/errorActionFactory';
 
 export const receiveValidToken = (token) => ({
-    type: SHARED_RECEIVE_TOKEN,
+    type: actionTypes.SHARED_RECEIVE_TOKEN,
     payload: {
         token,
     }
 });
 
 export const invalidateToken = () => ({
-    type: SHARED_INVALIDATE_TOKEN,
+    type: actionTypes.SHARED_INVALIDATE_TOKEN,
 });
 
 export const startAuthentication = () => ({

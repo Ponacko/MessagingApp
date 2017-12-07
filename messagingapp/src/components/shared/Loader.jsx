@@ -1,14 +1,14 @@
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
 import AdvancedLoader from 'react-loader-advanced';
-//import { SavingSpinner } from './SavingSpinner.jsx';
+import { SavingSpinner } from './SavingSpinner.jsx';
 
 const LoadingMessage = ({ message }) => (
     <div>
         <div>
-            {/*<SavingSpinner />*/}
+            <SavingSpinner />
         </div>
-        { message || 'Loading…' }
+        { message || 'Loading'}
     </div>
 );
 
@@ -19,8 +19,8 @@ LoadingMessage.propTypes = {
 const Loader = ({ children, isLoading, message }) => (
     <AdvancedLoader
         show={isLoading}
-        message={<LoadingMessage message={message} />}
-        backgroundStyle={{ borderRadius: '6px' }}
+        message={<LoadingMessage message={message}/>}
+        backgroundStyle={{borderRadius: '6px'}}
         hideContentOnLoad
     >
         {children}
