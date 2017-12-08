@@ -14,7 +14,11 @@
     "react-redux/es/connect/connect": "latest",
     "react-loader-advanced": "latest",
     "prop-types": "latest",
-    "connected-react-router": "latest"
+    "connected-react-router": "latest",
+    "react-router-dom": "latest",
+    "uuid": "latest",
+    "immutable": "latest",
+    "semantic-ui-react": "latest"
   },
   "scripts": {
     "start": "react-scripts start",

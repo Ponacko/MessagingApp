@@ -5,7 +5,7 @@ export class ChannelEditedItem extends React.Component {
     static propTypes = {
         item: PropTypes.shape({
             id: PropTypes.string.isRequired,
-            title: PropTypes.string.isRequired
+            name: PropTypes.string.isRequired
         }).isRequired,
         onCancel: PropTypes.func.isRequired,
         onSave: PropTypes.func.isRequired
@@ -25,7 +25,7 @@ export class ChannelEditedItem extends React.Component {
         this.setState((previousState) => ({
             editedItem: {
                 ...previousState.editedItem,
-                title: value
+                name: value
             }
         }));
     };
@@ -46,7 +46,7 @@ export class ChannelEditedItem extends React.Component {
                 <div className="form-group">
                     <label htmlFor="title">Name</label><br/>
                     <div className="col-sm-10">
-                        <input type="text" className="form-control" id="title" value={this.state.editedItem.title}
+                        <input type="text" className="form-control" id="title" value={this.state.editedItem.name}
                                onChange={this._onTitleChange}/>
                     </div>
                     <i className="btn btn-primary glyphicon glyphicon-ok pull-right"

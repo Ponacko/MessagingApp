@@ -5,17 +5,15 @@ import {Message} from "../../containers-redux/messenger/Message";
 import {MessagePanel} from "../../containers-redux/messenger/MessagePanel";
 import PropTypes from 'prop-types';
 import * as routes from "../../constants/routes";
-import { Button } from 'semantic-ui-react';
-import {
-    Link,
-} from 'react-router-dom';
+import {Button} from 'semantic-ui-react';
+import {Link,} from 'react-router-dom';
 
 export class MessageList extends React.Component {
 
     static propTypes = {
         channel: PropTypes.shape({
             id: PropTypes.string.isRequired,
-            title: PropTypes.string.isRequired,
+            name: PropTypes.string.isRequired,
             onCreateNew: PropTypes.func.isRequired,
         }).isRequired,
         list: PropTypes.instanceOf(Immutable.List).isRequired
@@ -50,7 +48,7 @@ export class MessageList extends React.Component {
                     <p>PROFILE</p>
                 </Button>
             </Link>
-            {this.props.channel.title}
+            {this.props.channel.name}
             {messages}
             <div className="bottomPanel">
                 <MessagePanel onSend={this._addToList}/>
