@@ -4,13 +4,11 @@ import uuidv4 from 'uuid/v4';
 const defaultChannels = Immutable.List([
     {
         id: uuidv4(),
-        title: 'First channel',
-        messageList: Immutable.List()
+        name: 'First channel'
     },
     {
         id: uuidv4(),
-        title: 'Second channel',
-        messageList: Immutable.List()
+        name: 'Second channel'
     }
 ]);
 

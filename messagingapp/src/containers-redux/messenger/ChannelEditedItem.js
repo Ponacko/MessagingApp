@@ -3,7 +3,7 @@ import {ChannelEditedItem} from "../../components/messenger/ChannelEditedItem";
 import connect from "react-redux/es/connect/connect";
 
 const mapDispatchToProps = (dispatch) => ({
-    onSave: (channel) => dispatch(updateChannel(channel)),
+    onSave: (channel) =>  dispatch(updateChannel(channel)),
     onCancel: () => dispatch(cancelEditingChannel())
 });
 
