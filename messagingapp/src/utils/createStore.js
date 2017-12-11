@@ -3,7 +3,6 @@ import {connectRouter, routerMiddleware} from 'connected-react-router';
 import {app} from '../reducers/app';
 import logger from 'redux-logger';
 import {defaultChannel, getInitialChannelMessages} from "./getInitialChannelMessages";
-import {getInitialChannels} from "./getInitialChannels";
 import applyMiddleware from "redux/es/applyMiddleware";
 import {getPersistedToken} from "./getPersistedToken";
 import {getInitialSelectedChannel} from "./getInitialSelectedChannel";
@@ -13,7 +12,6 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const initialState = {
     chatApp: {
-        channelList: getInitialChannels(),
         messageList: getInitialChannelMessages(),
         selectedChannel: getInitialSelectedChannel(),
     },

@@ -10,6 +10,7 @@ import {
     MESSAGE_DELETE,
     MESSAGE_SEND,
     MESSAGE_UPDATE,
+    RECEIVE_CHANNEL_LIST,
     START_EDITING_CHANNEL
 } from '../constants/actionTypes';
 
@@ -91,5 +92,12 @@ export const switchChannel = (channel) => ({
     type: CHANNEL_SWITCH,
     payload: {
         channel
+    }
+});
+
+export const receiveChannelList = (channelList) => ({
+    type: RECEIVE_CHANNEL_LIST,
+    payload: {
+        channelList
     }
 });

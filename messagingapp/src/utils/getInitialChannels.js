@@ -1,5 +1,6 @@
 import * as Immutable from 'immutable';
 import uuidv4 from 'uuid/v4';
+import {initializeChannels} from "../actions/shared/getAppData";
 
 const defaultChannels = Immutable.List([
     {
@@ -13,6 +14,5 @@ const defaultChannels = Immutable.List([
 ]);
 
 export const getInitialChannels = () => {
-    const storedListJSON = localStorage.getItem('channelList');
-    return storedListJSON ? Immutable.List(JSON.parse(storedListJSON)) : defaultChannels;
+    return JSON.parse(initializeChannels());
 };

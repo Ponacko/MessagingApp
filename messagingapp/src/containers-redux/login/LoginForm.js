@@ -5,7 +5,8 @@ import {authenticateUser} from '../../actions/shared/authenticateUser';
 import {registerUser} from "../../actions/shared/registerUser";
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-    onSubmit: (email) => dispatch(authenticateUser(ownProps.from, email)),
+    onSubmit: (email) =>
+        dispatch(authenticateUser(ownProps.from, email)),
     onRegister: (email) => dispatch(registerUser(ownProps.from, email))
 });
 
@@ -16,4 +17,4 @@ connectedComponent.propTypes = {
     from: PropTypes.object.isRequired,
 };
 
-export { connectedComponent as LoginForm };
+export {connectedComponent as LoginForm};

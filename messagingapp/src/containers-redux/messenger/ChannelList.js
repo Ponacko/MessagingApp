@@ -1,9 +1,7 @@
-import {
-    cancelEditingChannel, createNewChannel, deleteChannel, startEditingChannel, switchChannel,
-    updateChannel
-} from "../../actions/actionCreators";
+import {createNewChannel, startEditingChannel, switchChannel} from "../../actions/actionCreators";
 import connect from "react-redux/es/connect/connect";
 import {ChannelList} from "../../components/messenger/ChannelList";
+import {initializeChannels} from "../../actions/shared/getAppData";
 
 const mapStateToProps = (state) => ({
     list: state.chatApp.channelList,
@@ -12,6 +10,7 @@ const mapStateToProps = (state) => ({
 });
 
 const  mapDispatchToProps = (dispatch) => ({
+    onInitialize: () => dispatch(initializeChannels()),
     onCreateNew: (channel) => dispatch(createNewChannel(channel)),
     onStartEditing: (id) => dispatch(startEditingChannel(id)),
     onSelectChannel: (channel) => dispatch(switchChannel(channel))

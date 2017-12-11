@@ -2,23 +2,23 @@ import {validateResponse} from './validateResponse';
 import {API_APP_URI} from '../../constants/api';
 
 export const fetchAddChannel = (token, channel) => {
-
-    const op = (channel.id !== null) ? "replace" : "add";
+    console.log(channel);
+    console.log(API_APP_URI);
     return fetch(
         API_APP_URI,
         {
             method: 'PATCH',
             headers: {
                 'Authorization': `bearer ${token}`,
+                'Content-Type': 'application/json',
                 'Accept': `application\json`,
             },
             body: JSON.stringify([
                 {
-                    "path": "/channels/-",
-                    "op": op,
-                    "value" : {
-                        "id" : `${channel.id}`,
-                        "name" : `${channel.name}`
+                    path: '/channels/-',
+                    op: 'add',
+                    value : {
+                        name : `${channel.name}`
                     }
 
                 }
