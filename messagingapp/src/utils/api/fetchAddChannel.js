@@ -2,8 +2,20 @@ import {validateResponse} from './validateResponse';
 import {API_APP_URI} from '../../constants/api';
 
 export const fetchAddChannel = (token, channel) => {
-    console.log(channel);
-    console.log(API_APP_URI);
+    const op = (channel.id !== null) ? "replace" : "add";
+    const id = (channel.id !== null) ? channel.id : "-";
+    const jsonBody = [
+        {
+            path: `/channels/${id}`,
+            op: `${op}`,
+            value : {
+                id : `${channel.id}`,
+                name : `${channel.name}`
+            }
+
+        }
+];
+    console.log(jsonBody);
     return fetch(
         API_APP_URI,
         {
@@ -13,16 +25,7 @@ export const fetchAddChannel = (token, channel) => {
                 'Content-Type': 'application/json',
                 'Accept': `application\json`,
             },
-            body: JSON.stringify([
-                {
-                    path: '/channels/-',
-                    op: 'add',
-                    value : {
-                        name : `${channel.name}`
-                    }
-
-                }
-            ]  ),
+            body: JSON.stringify(jsonBody),
         })
         .then(validateResponse);
 };
