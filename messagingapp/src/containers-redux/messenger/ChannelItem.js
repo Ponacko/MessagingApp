@@ -1,13 +1,14 @@
-import {deleteChannel, startEditingChannel} from "../../actions/actionCreators";
+import {startEditingChannel} from "../../actions/actionCreators";
 import connect from "react-redux/es/connect/connect";
 import {ChannelItem} from "../../components/messenger/ChannelItem";
+import {deleteChannelApi} from "../../actions/shared/deleteChannel";
 
 const mapStateToProps = (state) => ({
     expandDisabled:  !!state.editedChannelId
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-    onDelete: () => dispatch(deleteChannel(ownProps.item.id)),
+    onDelete: () => dispatch(deleteChannelApi(ownProps.item)),
     onExpand: () => dispatch(startEditingChannel(ownProps.item.id))
 });
 

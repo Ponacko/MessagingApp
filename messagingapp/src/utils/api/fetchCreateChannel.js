@@ -1,20 +1,17 @@
 import {validateResponse} from './validateResponse';
 import {API_APP_URI} from '../../constants/api';
 
-export const fetchAddChannel = (token, channel) => {
-    const op = (channel.id !== null) ? "replace" : "add";
-    const id = (channel.id !== null) ? channel.id : "-";
+export const fetchCreateChannel = (token, channel) => {
     const jsonBody = [
         {
-            path: `/channels/${id}`,
-            op: `${op}`,
+            path: `/channels/-`,
+            op: 'add',
             value : {
-                id : `${channel.id}`,
                 name : `${channel.name}`
             }
 
         }
-];
+    ];
     console.log(jsonBody);
     return fetch(
         API_APP_URI,

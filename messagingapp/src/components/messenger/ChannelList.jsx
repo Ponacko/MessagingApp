@@ -1,5 +1,4 @@
 import * as React from "react/cjs/react.production.min";
-import uuidv4 from 'uuid/v4';
 import Immutable from 'immutable';
 import PropTypes from 'prop-types';
 import {MessageList} from "../../containers-redux/messenger/MessageList";
@@ -32,7 +31,7 @@ export class ChannelList extends React.Component {
 
     _onAddClick = () => {
         const newChannel = {
-            id:  uuidv4(),
+            id : null,
             name: 'New channel'
         };
         this.props.onCreateNew(newChannel)
