@@ -34,7 +34,7 @@ export class MessageList extends React.Component {
             datum: new Date().toLocaleTimeString(),
             counter: 0
         };
-        return this.props.onCreateNew(message);
+        return this.props.onCreateNew(this.props.channel, message);
     };
 
     render() {

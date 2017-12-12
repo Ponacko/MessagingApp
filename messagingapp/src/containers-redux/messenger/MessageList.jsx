@@ -1,6 +1,6 @@
 import connect from "react-redux/es/connect/connect";
-import {createNewMessage} from "../../actions/actionCreators";
 import {MessageList} from "../../components/messenger/MessageList";
+import {sendMessageApi} from "../../actions/shared/sendMessage";
 
 const mapStateToProps = (state) => ({
     channel: state.chatApp.selectedChannel,
@@ -8,7 +8,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    onCreateNew: (message) => dispatch(createNewMessage(message)),
+    onCreateNew: (channel, message) => dispatch(sendMessageApi(channel, message)),
 });
 
 const enhancer = connect(mapStateToProps, mapDispatchToProps);
