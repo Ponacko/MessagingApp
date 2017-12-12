@@ -1,19 +1,19 @@
+import {fetchMessageList} from "../../utils/api/fetchMessageList";
 import {performAuthorizedRequest} from "../profile/performAuthorizedRequest";
-import {fetchMessageCreate} from "../../utils/api/fetchMessageCreate";
-import {getMessages} from "./getMessages";
+import {receiveMessageList} from "./actionCreators";
 
-export const sendMessageApi = (channel, message) =>
+export const getMessages = (channel) =>
     async (dispatch, getState) => {
         try {
             const authToken = getState().shared.token;
             await performAuthorizedRequest(dispatch, async () => {
-                const received = await fetchMessageCreate(authToken, channel, message);
+                await fetchMessageList(authToken, channel)
+                    .then((data) => {
+                    dispatch(receiveMessageList(data));
+                });
             });
         } catch
             (error) {
             console.log(error)
-        }
-        finally {
-            dispatch(getMessages(channel));
         }
     };

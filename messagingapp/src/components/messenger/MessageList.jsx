@@ -19,20 +19,17 @@ export class MessageList extends React.Component {
         list: PropTypes.instanceOf(Immutable.List).isRequired
     };
 
-    componentWillUpdate(nextProps) {
-        if (this.props.list !== nextProps.list && this.props.channel.id === nextProps.channel.id) {
-            console.log(nextProps.list);
-            localStorage.setItem('messages' + this.props.channel.id, JSON.stringify(nextProps.list.toJS()));
-        }
+    componentWillMount(){
+        this.props.onInitialize();
     }
 
     _addToList = (x) => {
         const id = uuidv4();
         const message = {
             id: id,
-            title: x,
-            datum: new Date().toLocaleTimeString(),
-            counter: 0
+            value: x,
+            createdAt: new Date().toLocaleTimeString(),
+            customData: 0
         };
         return this.props.onCreateNew(this.props.channel, message);
     };

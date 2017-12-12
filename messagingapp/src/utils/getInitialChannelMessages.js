@@ -1,15 +1,10 @@
-import * as Immutable from "immutable";
-
 import {getInitialSelectedChannel} from "./getInitialSelectedChannel";
+import {getMessages} from "../actions/shared/getMessages";
 
 
 export const getInitialChannelMessages = (channel = getInitialSelectedChannel()) => {
     let storedListJSON = null;
     if (channel) {
-        console.log('list to' + channel.title);
-        storedListJSON = localStorage.getItem('messages' + channel.id);
-        console.log('loading messages' + channel.title);
+        storedListJSON = getMessages(channel)
     }
-    return storedListJSON ? Immutable.List(JSON.parse(storedListJSON)) : Immutable.List();
-
 };

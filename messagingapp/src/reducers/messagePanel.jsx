@@ -1,12 +1,11 @@
-import {INPUT_CHANGED, MESSAGE_CREATE, MESSAGE_SEND} from "../constants/actionTypes";
-import * as Immutable from 'immutable';
+import {INPUT_CHANGED, RECEIVE_MESSAGE_LIST} from "../constants/actionTypes";
 
 export const messagePanel = (prevState = "", action) => {
         switch(action.type){
             case INPUT_CHANGED :
                     //console.log(prevState, action)
                     return action.payload.string;
-            case MESSAGE_CREATE :
+            case RECEIVE_MESSAGE_LIST :
                     //console.log(prevState, action);
                     return "";
             default:

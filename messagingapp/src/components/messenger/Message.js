@@ -6,16 +6,16 @@ export class Message extends React.Component{
         super(props);
 
         this.state = {
-            counter: props.item.counter
+            counter: props.item.customData
         };
     }
 
     static propTypes = {
         item: PropTypes.shape({
             id: PropTypes.string.isRequired,
-            title: PropTypes.string.isRequired,
-            datum: PropTypes.string,
-            counter: PropTypes.number.isRequired
+            value: PropTypes.string.isRequired,
+            createdAt: PropTypes.string,
+            customData: PropTypes.number.isRequired
         }).isRequired,
         onDelete: PropTypes.func.isRequired,
     };
@@ -38,9 +38,9 @@ export class Message extends React.Component{
             <div className="message msj-rta macro">
                 <div className="text text-l">
                     <p>
-                        <small>{this.props.item.datum}</small>
+                        <small>{this.props.item.createdAt}</small>
                     </p>
-                    <p>{this.props.item.title}</p>
+                    <p>{this.props.item.value}</p>
                 </div>
                 <p className="numberCircle">{this.state.counter}</p>
                 <button
