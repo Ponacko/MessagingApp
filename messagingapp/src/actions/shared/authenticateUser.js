@@ -9,6 +9,7 @@ export const authenticateUser = (destinationLocation, email) =>
         dispatch(startAuthentication());
         return fetchAuthToken(email)
             .then((token) => {
+                localStorage.setItem("userEmail", JSON.stringify(email));
                 dispatch(receiveValidToken(token));
                 dispatch(push(destinationLocation));
 

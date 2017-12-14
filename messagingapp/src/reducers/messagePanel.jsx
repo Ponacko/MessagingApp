@@ -8,7 +8,7 @@ export const messagePanel = (prevState = "", action) => {
             case RECEIVE_MESSAGE_LIST :
                     //console.log(prevState, action);
                     return "";
-            default:
+            default: 
                 return null
         }
 };

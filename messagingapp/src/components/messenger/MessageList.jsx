@@ -23,6 +23,10 @@ export class MessageList extends React.Component {
         this.props.onInitialize();
     }
 
+    _getUserName(){
+        return JSON.parse(localStorage.getItem('userEmail'));
+    }
+
     _addToList = (x) => {
         const id = uuidv4();
         const message = {
@@ -42,7 +46,7 @@ export class MessageList extends React.Component {
         return <div className="list-group messages">
             <Link to={routes.PROFILE}>
                 <Button className="btn btn-primary" style={{float: "right"}}>
-                    <p>PROFILE</p>
+                    <p>{this._getUserName()}</p>
                 </Button>
             </Link>
             {this.props.channel.name}
