@@ -1,10 +1,12 @@
 import * as Immutable from 'immutable';
-import {MESSAGE_DELETE, RECEIVE_MESSAGE_LIST} from "../constants/actionTypes";
+import {CLEAR_MESSAGE_LIST, MESSAGE_DELETE, RECEIVE_MESSAGE_LIST} from "../constants/actionTypes";
 
 export const messageList = (previousState = Immutable.List(), action) => {
     switch (action.type){
         case RECEIVE_MESSAGE_LIST:
             return action.payload.messageList;
+        case CLEAR_MESSAGE_LIST:
+            return Immutable.List();
         case MESSAGE_DELETE: {
             /*const message = action.payload.id;
             const messageIndex = previousState.findIndex(i => i.id === message);

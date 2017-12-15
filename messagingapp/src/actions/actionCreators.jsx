@@ -1,16 +1,7 @@
 import uuidv4 from 'uuid/v4';
 import {
-    CANCEL_EDITING_CHANNEL,
-    CHANNEL_CREATE,
-    CHANNEL_DELETE,
-    CHANNEL_SWITCH,
-    CHANNEL_UPDATE,
-    INPUT_CHANGED,
-    MESSAGE_CREATE,
-    MESSAGE_DELETE,
-    MESSAGE_SEND,
-    MESSAGE_UPDATE,
-    RECEIVE_CHANNEL_LIST,
+    CANCEL_EDITING_CHANNEL, CHANNEL_CREATE, CHANNEL_DELETE, CHANNEL_SWITCH, CHANNEL_UPDATE, CLEAR_MESSAGE_LIST,
+    INPUT_CHANGED, MESSAGE_CREATE, MESSAGE_DELETE, MESSAGE_SEND, MESSAGE_UPDATE, RECEIVE_CHANNEL_LIST,
     START_EDITING_CHANNEL
 } from '../constants/actionTypes';
 
@@ -99,5 +90,11 @@ export const receiveChannelList = (channelList) => ({
     type: RECEIVE_CHANNEL_LIST,
     payload: {
         channelList
+    }
+});
+
+export const clearMessageList = () => ({
+    type: CLEAR_MESSAGE_LIST,
+    payload: {
     }
 });
