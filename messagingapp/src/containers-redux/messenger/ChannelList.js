@@ -16,6 +16,7 @@ const  mapDispatchToProps = (dispatch) => ({
     onCreateNew: (channel) => dispatch(createChannelApi(channel)),
     onStartEditing: (id) => dispatch(startEditingChannel(id)),
     onSelectChannel: (channel) => {
+        localStorage.setItem('selectedChannel', JSON.stringify(channel));
         dispatch(switchChannel(channel));
         dispatch(getMessages(channel))
     }

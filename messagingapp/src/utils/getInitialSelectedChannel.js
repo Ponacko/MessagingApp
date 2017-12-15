@@ -1,4 +1,3 @@
-import * as Immutable from "immutable";
 import uuidv4 from 'uuid/v4';
 
 export const defaultChannel = {
@@ -9,5 +8,6 @@ export const defaultChannel = {
 
 export const getInitialSelectedChannel = () => {
     const storedJSON = localStorage.getItem('selectedChannel');
+    console.log("loaded "+ storedJSON);
     return storedJSON ? JSON.parse(storedJSON) : defaultChannel;
 };

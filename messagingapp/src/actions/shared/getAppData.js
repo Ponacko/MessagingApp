@@ -2,6 +2,7 @@ import {dismissError, failAuthentication} from '../shared/actionCreators';
 import {MILLISECONDS_TO_AUTO_DISMISS_ERROR} from '../../constants/uiConstants';
 import {fetchAppData} from '../../utils/api/fetchAppData';
 import {receiveChannelList} from "../actionCreators";
+import {getMessages} from "./getMessages";
 
 export const initializeChannels = () =>
     (dispatch , getState) => {
@@ -10,6 +11,7 @@ export const initializeChannels = () =>
         return fetchAppData(token)
             .then((data) => {
                 dispatch(receiveChannelList(data));
+                dispatch(getMessages(getState().chatApp.selectedChannel));
             })
             .catch((error) => {
                 const dispatchedAction = dispatch(failAuthentication("There was an error while fetching app data.", error));

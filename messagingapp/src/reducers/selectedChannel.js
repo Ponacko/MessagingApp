@@ -1,10 +1,12 @@
-import * as Immutable from "immutable";
-import {CHANNEL_CREATE, CHANNEL_DELETE, CHANNEL_SWITCH, CHANNEL_UPDATE} from "../constants/actionTypes";
+import {CHANNEL_DELETE, CHANNEL_SWITCH, CHANNEL_UPDATE, RECEIVE_CHANNEL_LIST} from "../constants/actionTypes";
 import {defaultChannel} from "../utils/getInitialChannelMessages";
 import {getInitialChannels} from "../utils/getInitialChannels";
+import {getInitialSelectedChannel} from "../utils/getInitialSelectedChannel";
 
 export const selectedChannel = (previousState = null, action) => {
     switch (action.type){
+        case RECEIVE_CHANNEL_LIST:
+            return getInitialSelectedChannel();
         case CHANNEL_SWITCH:
             return action.payload.channel;
         case CHANNEL_UPDATE:

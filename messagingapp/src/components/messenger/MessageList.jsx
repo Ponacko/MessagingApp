@@ -32,6 +32,7 @@ export class MessageList extends React.Component {
         const message = {
             id: id,
             value: x,
+            createdBy: this._getUserName(),
             createdAt: new Date().toLocaleTimeString(),
             customData: 0
         };
