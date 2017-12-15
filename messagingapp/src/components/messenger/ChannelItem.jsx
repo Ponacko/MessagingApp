@@ -6,14 +6,24 @@ export class ChannelItem extends React.Component{
     static propTypes = {
         item: PropTypes.shape({
             id: PropTypes.string.isRequired,
-            name: PropTypes.string.isRequired
+            name: PropTypes.string.isRequired,
+            customData: PropTypes.string.isRequired
         }).isRequired,
         onDelete: PropTypes.func.isRequired,
         onExpand: PropTypes.func.isRequired,
         onClick: PropTypes.func.isRequired
     };
 
+    _isMyChannel() {
+        return (JSON.parse(localStorage.getItem('userEmail'))) === (this.props.item.customData);
+    }
+
     render(){
+        let deleteButton = null;
+        if (this._isMyChannel()){
+            deleteButton = <i className="glyphicon glyphicon-remove pull-right" aria-hidden="true"
+                              onClick={() => this.props.onDelete(this.props.item.id)}/>
+        }
         return (
             <div>
                 <a className="list-group-item list-group-item-action" >
@@ -22,8 +32,7 @@ export class ChannelItem extends React.Component{
                     <div className="container col-lg-10 text-center" onClick={this.props.onClick}>
                     {' '}{this.props.item.name} {' '}
                     </div>
-                    <i className="glyphicon glyphicon-remove pull-right" aria-hidden="true"
-                       onClick={() => this.props.onDelete(this.props.item.id)}/>
+                    {deleteButton}
                     <br/>
                 </a>
             </div>

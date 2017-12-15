@@ -20,15 +20,6 @@ export class ChannelList extends React.Component {
         this.props.onInitialize();
     }
 
-    // componentWillUpdate(nextProps) {
-    //     if (this.props.list !== nextProps.list) {
-    //         localStorage.setItem('channelList', JSON.stringify(nextProps.list.toJS()));
-    //     }
-    //     if (this.props.selectedChannel !== nextProps.selectedChannel) {
-    //         localStorage.setItem('selectedChannel', JSON.stringify(nextProps.selectedChannel));
-    //     }
-    // }
-
     _onAddClick = () => {
         const newChannel = {
             id : null,
