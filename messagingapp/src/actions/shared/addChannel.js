@@ -9,7 +9,8 @@ export const createChannelApi = (channel) =>
             console.log(channel);
             const authToken = getState().shared.token;
             await performAuthorizedRequest(dispatch, async () => {
-                const received = await fetchCreateChannel(authToken, channel);
+                const userEmail = JSON.parse(localStorage.getItem('userEmail'));
+                const received = await fetchCreateChannel(authToken, channel, userEmail);
                 dispatch(initializeChannels());
                 dispatch(startEditingChannel(channel.id));
             });

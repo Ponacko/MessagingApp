@@ -1,13 +1,14 @@
 import {validateResponse} from './validateResponse';
 import {API_APP_URI} from '../../constants/api';
 
-export const fetchCreateChannel = (token, channel) => {
+export const fetchCreateChannel = (token, channel, owner) => {
     const jsonBody = [
         {
             path: `/channels/-`,
             op: 'add',
             value : {
-                name : `${channel.name}`
+                name : `${channel.name}`,
+                customData : `${owner}`
             }
 
         }

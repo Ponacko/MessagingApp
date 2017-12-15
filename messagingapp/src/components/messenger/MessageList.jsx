@@ -50,7 +50,7 @@ export class MessageList extends React.Component {
                     <p>{this._getUserName()}</p>
                 </Button>
             </Link>
-            {this.props.channel.name}
+            {this.props.channel.name} owned by {this.props.channel.customData}
             {messages}
             <div className="bottomPanel">
                 <MessagePanel onSend={this._addToList}/>
