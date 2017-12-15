@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export class Message extends React.Component{
+export class Message extends React.Component {
     constructor(props) {
         super(props);
 
@@ -32,8 +32,18 @@ export class Message extends React.Component{
         }));
     };
 
+    _isMyMessage() {
+        return (JSON.parse(localStorage.getItem('userEmail'))) === (this.props.item.createdBy);
+    }
+
 //https://bootsnipp.com/snippets/featured/simple-chat
-    render(){
+    render() {
+        let deleteButton = null;
+        if (this._isMyMessage()){
+            deleteButton = <i className="glyphicon glyphicon-remove pull-right" aria-hidden="true"
+                              onClick={() => this.props.onDelete(this.props.item.id)}/>
+        }
+        console.log(this._isMyMessage());
         return <li style={{width: "100%"}}>
             <div className="message msj-rta macro">
                 <div className="text text-l">
@@ -55,8 +65,7 @@ export class Message extends React.Component{
                     className="btn btn-primary">
                     <span className="glyphicon glyphicon-download"/>
                 </button>
-                <i className="glyphicon glyphicon-remove pull-right" aria-hidden="true"
-                   onClick={() => this.props.onDelete(this.props.item.id)}/>
+                {deleteButton}
             </div>
         </li>;
     }

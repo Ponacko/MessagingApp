@@ -42,7 +42,7 @@ export class MessageList extends React.Component {
     render() {
         const {list} = this.props;
         const messages = list.map(item => {
-            return (<Message key={item.id} item={item} />)
+            return (<Message key={item.id} item={item} channel={this.props.channel}/>)
         });
         return <div className="list-group messages">
             <Link to={routes.PROFILE}>
