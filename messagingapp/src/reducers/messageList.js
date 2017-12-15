@@ -4,7 +4,7 @@ import {CLEAR_MESSAGE_LIST, MESSAGE_DELETE, RECEIVE_MESSAGE_LIST} from "../const
 export const messageList = (previousState = Immutable.List(), action) => {
     switch (action.type){
         case RECEIVE_MESSAGE_LIST:
-            return Immutable.List(action.payload.messageList);
+            return Immutable.List(action.payload.messageList).reverse();
         case CLEAR_MESSAGE_LIST:
             return Immutable.List();
         case MESSAGE_DELETE: {
