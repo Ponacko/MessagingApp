@@ -4,9 +4,17 @@ import PropTypes from 'prop-types';
 export class Message extends React.Component {
     constructor(props) {
         super(props);
+        //
+        // const {customData} = this.props.item;
+        // const {votedBy} = JSON.parse(customData);
+        // const votedByKeys = votedBy.keySeq();
+        // const votes = votedByKeys.reduce((res, key) => votedBy.get(key) + res);
+        //
+        // console.log("wtf");
+        // console.log("custom data : " + votes);
 
         this.state = {
-            counter: props.item.customData
+            counter: 0
         };
     }
 
@@ -15,7 +23,7 @@ export class Message extends React.Component {
             id: PropTypes.string.isRequired,
             value: PropTypes.string.isRequired,
             createdAt: PropTypes.string,
-            customData: PropTypes.number.isRequired
+            customData: PropTypes.string.isRequired
         }).isRequired,
         onDelete: PropTypes.func.isRequired,
     };
@@ -39,7 +47,7 @@ export class Message extends React.Component {
 //https://bootsnipp.com/snippets/featured/simple-chat
     render() {
         let deleteButton = null;
-        if (this._isMyMessage()){
+        if (this._isMyMessage()) {
             deleteButton = <i className="glyphicon glyphicon-remove pull-right" aria-hidden="true"
                               onClick={() => this.props.onDelete(this.props.item.id)}/>
         }
@@ -55,13 +63,13 @@ export class Message extends React.Component {
                 <p className="numberCircle">{this.state.counter}</p>
                 <button
                     type="button"
-                    onClick={this._increment}
+                    onClick={this.props.onUpvote}
                     className="btn btn-primary">
                     <span className="glyphicon glyphicon-upload"/>
                 </button>
                 <button
                     type="button"
-                    onClick={this._decrement}
+                    onClick={this.props.onDownvote}
                     className="btn btn-primary">
                     <span className="glyphicon glyphicon-download"/>
                 </button>

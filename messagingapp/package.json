@@ -18,7 +18,8 @@
     "react-router-dom": "latest",
     "uuid": "latest",
     "immutable": "latest",
-    "semantic-ui-react": "latest"
+    "semantic-ui-react": "latest",
+    "lodash-es": "latest"
   },
   "scripts": {
     "start": "react-scripts start",
