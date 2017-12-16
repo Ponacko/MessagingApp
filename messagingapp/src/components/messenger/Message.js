@@ -48,7 +48,7 @@ export class Message extends React.Component {
             <div className="message msj-rta macro">
                 <div className="text text-l">
                     <p>
-                        <small>{this.props.item.createdBy} - {this.props.item.createdAt}</small>
+                        <small><b>{this.props.item.createdBy}</b> - {this.props.item.createdAt}</small>
                     </p>
                     <p>{this.props.item.value}</p>
                 </div>

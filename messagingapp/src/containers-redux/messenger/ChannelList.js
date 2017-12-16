@@ -1,4 +1,4 @@
-import {startEditingChannel, switchChannel} from "../../actions/actionCreators";
+import {clearMessageList, startEditingChannel, switchChannel} from "../../actions/actionCreators";
 import connect from "react-redux/es/connect/connect";
 import {ChannelList} from "../../components/messenger/ChannelList";
 import {initializeChannels} from "../../actions/shared/getAppData";
@@ -18,6 +18,7 @@ const  mapDispatchToProps = (dispatch) => ({
     onSelectChannel: (channel) => {
         localStorage.setItem('selectedChannel', JSON.stringify(channel));
         dispatch(switchChannel(channel));
+        dispatch(clearMessageList());
         dispatch(getMessages(channel))
     }
 });

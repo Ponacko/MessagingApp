@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6ac6fca1-e269-4707-ab91-10a871fcbc2e" name="Default" comment="">
+    <list default="true" id="6ac6fca1-e269-4707-ab91-10a871fcbc2e" name="Default" comment="Remove Delete channel button for non-owners">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/messagingapp/src/components/messenger/ChannelItem.jsx" afterPath="$PROJECT_DIR$/messagingapp/src/components/messenger/ChannelItem.jsx" />
-      <change beforePath="$PROJECT_DIR$/messagingapp/src/components/messenger/ChannelList.jsx" afterPath="$PROJECT_DIR$/messagingapp/src/components/messenger/ChannelList.jsx" />
+      <change beforePath="$PROJECT_DIR$/messagingapp/src/actions/shared/getMessages.js" afterPath="$PROJECT_DIR$/messagingapp/src/actions/shared/getMessages.js" />
+      <change beforePath="$PROJECT_DIR$/messagingapp/src/components/messenger/Message.js" afterPath="$PROJECT_DIR$/messagingapp/src/components/messenger/Message.js" />
+      <change beforePath="$PROJECT_DIR$/messagingapp/src/components/messenger/MessageList.jsx" afterPath="$PROJECT_DIR$/messagingapp/src/components/messenger/MessageList.jsx" />
+      <change beforePath="$PROJECT_DIR$/messagingapp/src/containers-redux/messenger/ChannelList.js" afterPath="$PROJECT_DIR$/messagingapp/src/containers-redux/messenger/ChannelList.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -27,7 +29,7 @@
       <file leaf-file-name="Message.jsx" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/messagingapp/src/containers-redux/messenger/Message.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="308">
+            <state relative-caret-position="0">
               <caret line="11" column="40" lean-forward="false" selection-start-line="11" selection-start-column="40" selection-end-line="11" selection-end-column="40" />
               <folding>
                 <element signature="e#0#76#0" expanded="true" />
@@ -36,81 +38,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="getInitialChannels.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/messagingapp/src/utils/getInitialChannels.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="392">
-              <caret line="16" column="44" lean-forward="true" selection-start-line="16" selection-start-column="44" selection-end-line="16" selection-end-column="44" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="api.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/messagingapp/src/constants/api.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="84">
-              <caret line="3" column="56" lean-forward="true" selection-start-line="3" selection-start-column="20" selection-end-line="3" selection-end-column="56" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="addChannel.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/messagingapp/src/actions/shared/addChannel.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="336">
-              <caret line="12" column="48" lean-forward="false" selection-start-line="12" selection-start-column="48" selection-end-line="12" selection-end-column="48" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="fetchCreateChannel.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/messagingapp/src/utils/api/fetchCreateChannel.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="56">
-              <caret line="3" column="13" lean-forward="false" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ChannelList.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/messagingapp/src/containers-redux/messenger/ChannelList.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="536">
-              <caret line="25" column="40" lean-forward="false" selection-start-line="25" selection-start-column="40" selection-end-line="25" selection-end-column="40" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ChannelList.jsx" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/messagingapp/src/components/messenger/ChannelList.jsx">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="280">
-              <caret line="37" column="25" lean-forward="true" selection-start-line="37" selection-start-column="25" selection-end-line="37" selection-end-column="25" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="ChannelItem.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/messagingapp/src/containers-redux/messenger/ChannelItem.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="336">
-              <caret line="15" column="44" lean-forward="true" selection-start-line="15" selection-start-column="44" selection-end-line="15" selection-end-column="44" />
+              <caret line="15" column="44" lean-forward="false" selection-start-line="15" selection-start-column="44" selection-end-line="15" selection-end-column="44" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ChannelItem.jsx" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ChannelItem.jsx" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/messagingapp/src/components/messenger/ChannelItem.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="504">
-              <caret line="34" column="33" lean-forward="false" selection-start-line="34" selection-start-column="33" selection-end-line="34" selection-end-column="33" />
+            <state relative-caret-position="588">
+              <caret line="22" column="33" lean-forward="true" selection-start-line="22" selection-start-column="33" selection-end-line="22" selection-end-column="33" />
               <folding />
             </state>
           </provider>
@@ -119,8 +61,68 @@
       <file leaf-file-name="Message.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/messagingapp/src/components/messenger/Message.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="34" column="3" lean-forward="true" selection-start-line="34" selection-start-column="3" selection-end-line="36" selection-end-column="5" />
+            <state relative-caret-position="-280">
+              <caret line="18" column="22" lean-forward="true" selection-start-line="18" selection-start-column="22" selection-end-line="18" selection-end-column="22" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ChannelList.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/messagingapp/src/containers-redux/messenger/ChannelList.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="476">
+              <caret line="22" column="5" lean-forward="true" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MessageList.jsx" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/messagingapp/src/containers-redux/messenger/MessageList.jsx">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="313">
+              <caret line="16" column="38" lean-forward="true" selection-start-line="16" selection-start-column="38" selection-end-line="16" selection-end-column="38" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="getMessages.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/messagingapp/src/actions/shared/getMessages.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="56">
+              <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="fetchMessageList.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/messagingapp/src/utils/api/fetchMessageList.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="56">
+              <caret line="3" column="13" lean-forward="false" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MessageList.jsx" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/messagingapp/src/components/messenger/MessageList.jsx">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="280">
+              <caret line="39" column="21" lean-forward="true" selection-start-line="39" selection-start-column="21" selection-end-line="39" selection-end-column="21" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="channelList.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/messagingapp/src/reducers/channelList.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="112">
+              <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -194,20 +196,20 @@
         <option value="$PROJECT_DIR$/messagingapp/src/constants/actionTypes.jsx" />
         <option value="$PROJECT_DIR$/messagingapp/src/actions/actionCreators.jsx" />
         <option value="$PROJECT_DIR$/messagingapp/src/containers-redux/messenger/MessageList.jsx" />
-        <option value="$PROJECT_DIR$/messagingapp/src/actions/shared/getMessages.js" />
         <option value="$PROJECT_DIR$/messagingapp/src/reducers/messagePanel.jsx" />
         <option value="$PROJECT_DIR$/messagingapp/src/reducers/messageList.js" />
-        <option value="$PROJECT_DIR$/messagingapp/src/components/messenger/Message.js" />
         <option value="$PROJECT_DIR$/messagingapp/src/actions/shared/deleteMessage.js" />
         <option value="$PROJECT_DIR$/messagingapp/src/containers-redux/messenger/Message.jsx" />
         <option value="$PROJECT_DIR$/messagingapp/src/utils/api/fetchMessageDelete.js" />
         <option value="$PROJECT_DIR$/messagingapp/src/actions/shared/deleteChannel.js" />
         <option value="$PROJECT_DIR$/messagingapp/src/utils/api/fetchCreateChannel.js" />
-        <option value="$PROJECT_DIR$/messagingapp/src/components/messenger/MessageList.jsx" />
         <option value="$PROJECT_DIR$/messagingapp/src/actions/shared/addChannel.js" />
-        <option value="$PROJECT_DIR$/messagingapp/src/containers-redux/messenger/ChannelList.js" />
         <option value="$PROJECT_DIR$/messagingapp/src/components/messenger/ChannelList.jsx" />
         <option value="$PROJECT_DIR$/messagingapp/src/components/messenger/ChannelItem.jsx" />
+        <option value="$PROJECT_DIR$/messagingapp/src/components/messenger/Message.js" />
+        <option value="$PROJECT_DIR$/messagingapp/src/actions/shared/getMessages.js" />
+        <option value="$PROJECT_DIR$/messagingapp/src/components/messenger/MessageList.jsx" />
+        <option value="$PROJECT_DIR$/messagingapp/src/containers-redux/messenger/ChannelList.js" />
       </list>
     </option>
   </component>
@@ -247,6 +249,7 @@
     </navigator>
     <panes>
       <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -351,7 +354,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -439,6 +441,7 @@
       <workItem from="1513203505884" duration="597000" />
       <workItem from="1513241293988" duration="8219000" />
       <workItem from="1513327809746" duration="4350000" />
+      <workItem from="1513421184564" duration="4370000" />
     </task>
     <task id="LOCAL-00001" summary="Sample action for create channel button">
       <created>1509053127196</created>
@@ -720,11 +723,18 @@
       <option name="project" value="LOCAL" />
       <updated>1513345277671</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="Remove Delete channel button for non-owners">
+      <created>1513376459375</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1513376459375</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="223749000" />
+    <option name="totallyTimeSpent" value="228192000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1060" extended-state="6" />
@@ -782,7 +792,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="Add router" />
     <MESSAGE value="Add login screen" />
     <MESSAGE value="Add token to local storage" />
     <MESSAGE value="Fix upvotes not being updated" />
@@ -807,7 +816,8 @@
     <MESSAGE value="Reverse message list" />
     <MESSAGE value="API: Delete messages" />
     <MESSAGE value="Add channel owners" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add channel owners" />
+    <MESSAGE value="Remove Delete channel button for non-owners" />
+    <option name="LAST_COMMIT_MESSAGE" value="Remove Delete channel button for non-owners" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -829,13 +839,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/messagingapp/src/utils/api/fetchRegisterUser.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="56">
-          <caret line="3" column="13" lean-forward="false" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/messagingapp/src/actions/shared/logoutUser.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="56">
@@ -941,13 +944,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/messagingapp/src/reducers/channelList.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/messagingapp/src/App.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -996,7 +992,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="308">
           <caret line="11" column="2" lean-forward="true" selection-start-line="11" selection-start-column="2" selection-end-line="11" selection-end-column="2" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1053,27 +1048,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/messagingapp/src/utils/api/fetchMessageList.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="56">
-          <caret line="3" column="13" lean-forward="false" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/messagingapp/src/constants/actionTypes.jsx">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="648">
           <caret line="30" column="0" lean-forward="true" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/messagingapp/src/actions/shared/getMessages.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="364">
-          <caret line="13" column="55" lean-forward="true" selection-start-line="13" selection-start-column="55" selection-end-line="13" selection-end-column="55" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1089,7 +1067,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="21" selection-end-column="1" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1117,7 +1094,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="196">
           <caret line="9" column="66" lean-forward="false" selection-start-line="9" selection-start-column="66" selection-end-line="9" selection-end-column="66" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1126,39 +1102,15 @@
         <state relative-caret-position="420">
           <caret line="15" column="2" lean-forward="true" selection-start-line="15" selection-start-column="2" selection-end-line="15" selection-end-column="2" />
           <folding>
-            <element signature="e#0#52#0" expanded="true" />
+            <element signature="e#0#52#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/messagingapp/src/containers-redux/messenger/MessageList.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="364">
-          <caret line="16" column="44" lean-forward="false" selection-start-line="16" selection-start-column="44" selection-end-line="16" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/messagingapp/src/components/messenger/MessageList.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="728">
-          <caret line="52" column="77" lean-forward="false" selection-start-line="52" selection-start-column="77" selection-end-line="52" selection-end-column="77" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/messagingapp/src/containers-redux/messenger/ChannelList.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="536">
-          <caret line="25" column="40" lean-forward="false" selection-start-line="25" selection-start-column="40" selection-end-line="25" selection-end-column="40" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/messagingapp/src/utils/getInitialChannels.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="392">
-          <caret line="16" column="44" lean-forward="true" selection-start-line="16" selection-start-column="44" selection-end-line="16" selection-end-column="44" />
+          <caret line="16" column="44" lean-forward="false" selection-start-line="16" selection-start-column="44" selection-end-line="16" selection-end-column="44" />
           <folding />
         </state>
       </provider>
@@ -1166,7 +1118,7 @@
     <entry file="file://$PROJECT_DIR$/messagingapp/src/constants/api.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="84">
-          <caret line="3" column="56" lean-forward="true" selection-start-line="3" selection-start-column="20" selection-end-line="3" selection-end-column="56" />
+          <caret line="3" column="56" lean-forward="false" selection-start-line="3" selection-start-column="20" selection-end-line="3" selection-end-column="56" />
           <folding />
         </state>
       </provider>
@@ -1181,7 +1133,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/messagingapp/src/actions/shared/addChannel.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
+        <state relative-caret-position="252">
           <caret line="12" column="48" lean-forward="false" selection-start-line="12" selection-start-column="48" selection-end-line="12" selection-end-column="48" />
           <folding />
         </state>
@@ -1189,8 +1141,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/messagingapp/src/components/messenger/ChannelList.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="37" column="25" lean-forward="true" selection-start-line="37" selection-start-column="25" selection-end-line="37" selection-end-column="25" />
+        <state relative-caret-position="868">
+          <caret line="37" column="25" lean-forward="false" selection-start-line="37" selection-start-column="25" selection-end-line="37" selection-end-column="25" />
           <folding />
         </state>
       </provider>
@@ -1198,14 +1150,14 @@
     <entry file="file://$PROJECT_DIR$/messagingapp/src/containers-redux/messenger/ChannelItem.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="336">
-          <caret line="15" column="44" lean-forward="true" selection-start-line="15" selection-start-column="44" selection-end-line="15" selection-end-column="44" />
+          <caret line="15" column="44" lean-forward="false" selection-start-line="15" selection-start-column="44" selection-end-line="15" selection-end-column="44" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/messagingapp/src/containers-redux/messenger/Message.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
+        <state relative-caret-position="0">
           <caret line="11" column="40" lean-forward="false" selection-start-line="11" selection-start-column="40" selection-end-line="11" selection-end-column="40" />
           <folding>
             <element signature="e#0#76#0" expanded="true" />
@@ -1213,18 +1165,74 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/messagingapp/src/components/messenger/Message.js">
+    <entry file="file://$PROJECT_DIR$/messagingapp/src/components/messenger/ChannelItem.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="34" column="3" lean-forward="true" selection-start-line="34" selection-start-column="3" selection-end-line="36" selection-end-column="5" />
+        <state relative-caret-position="588">
+          <caret line="22" column="33" lean-forward="true" selection-start-line="22" selection-start-column="33" selection-end-line="22" selection-end-column="33" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/messagingapp/src/components/messenger/ChannelItem.jsx">
+    <entry file="file://$PROJECT_DIR$/messagingapp/src/components/messenger/Message.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="34" column="33" lean-forward="false" selection-start-line="34" selection-start-column="33" selection-end-line="34" selection-end-column="33" />
+        <state relative-caret-position="-280">
+          <caret line="18" column="22" lean-forward="true" selection-start-line="18" selection-start-column="22" selection-end-line="18" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external/lib.dom.d.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="15085" column="17" lean-forward="false" selection-start-line="15085" selection-start-column="17" selection-end-line="15085" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/messagingapp/src/utils/api/fetchMessageList.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="56">
+          <caret line="3" column="13" lean-forward="false" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/messagingapp/src/containers-redux/messenger/MessageList.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="313">
+          <caret line="16" column="38" lean-forward="true" selection-start-line="16" selection-start-column="38" selection-end-line="16" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/messagingapp/src/components/messenger/MessageList.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="39" column="21" lean-forward="true" selection-start-line="39" selection-start-column="21" selection-end-line="39" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/messagingapp/src/reducers/channelList.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/messagingapp/src/actions/shared/getMessages.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="56">
+          <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/messagingapp/src/containers-redux/messenger/ChannelList.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="22" column="5" lean-forward="true" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
           <folding />
         </state>
       </provider>

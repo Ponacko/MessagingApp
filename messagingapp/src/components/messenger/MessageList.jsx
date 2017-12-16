@@ -19,9 +19,15 @@ export class MessageList extends React.Component {
         list: PropTypes.instanceOf(Immutable.List).isRequired
     };
 
-    componentWillMount(){
-        this.props.onInitialize();
+    constructor(props) {
+        super(props);
+        this.intervalId = setInterval(() => this.props.onInitialize(this.props.channel), 3000);
     }
+
+    componentWillUnmount() {
+        clearInterval(this.intervalId);
+    }
+
 
     _getUserName(){
         return JSON.parse(localStorage.getItem('userEmail'));
